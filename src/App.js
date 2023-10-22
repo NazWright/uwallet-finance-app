@@ -1,9 +1,9 @@
 import { Hub, Auth } from "aws-amplify";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import SignUp from "./components/signUp/SignUp";
 import Dashboard from "./components/dashboard/Dashboard";
 import Authentication from "./components/auth/Auth";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -15,13 +15,13 @@ function App() {
         default:
           break;
         case "signIn":
-          console.log("user has signed in");
+          console.info("user has signed in");
           break;
         case "signUp":
-          console.log("user has signed up for the application");
+          console.info("user has signed up for the application");
           break;
         case "signOut":
-          console.log("the user has signed out of the application.");
+          console.info("the user has signed out of the application.");
           break;
       }
     });
@@ -31,7 +31,7 @@ function App() {
         const user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
 
-        console.log(user);
+        console.dir(user);
 
         if (attributes.email && attributes.email_verified) {
           setAuthenticated(true);
@@ -55,7 +55,12 @@ function App() {
     return <Authentication />;
   }
 
-  return renderBasedOnAuth();
+  return (
+    <div>
+      {authenticated && <Navbar />}
+      {renderBasedOnAuth()}
+    </div>
+  );
 }
 
 export default App;

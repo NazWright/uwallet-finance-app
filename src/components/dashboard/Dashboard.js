@@ -1,6 +1,7 @@
 import { Auth } from "aws-amplify";
 import React from "react";
 import { Button } from "react-bootstrap";
+import Navbar from "../navbar/Navbar";
 
 export default function Dashboard({ user }) {
   function onSignOut() {
@@ -9,7 +10,6 @@ export default function Dashboard({ user }) {
 
   return (
     <div>
-      {" "}
       Welcome
       <Button onClick={onSignOut}>Sign Out</Button>
     </div>

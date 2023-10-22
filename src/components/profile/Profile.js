@@ -1,41 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import "./profile.css";
 import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
 
 export default function Profile() {
-  return (
-    <div className="container mt-5">
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter First Name" />
-        </Form.Group>
+  const [hasVerification, setHasVerification] = useState(false);
 
-        <Form.Group className="mb-3" controlId="formBasicLastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Last Name" />
-        </Form.Group>
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control type="email" placeholder="Enter Email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+  const submitVerificationCode = async (data) => {
+    if (!data.verificationCode) return;
+    try {
+      const status = await Auth.confirmSignUp(
+        data.email,
+        data.verificationCode
+      );
+      if ("SUCCESS" === status) {
+        console.info("User has been successfully confirmed.");
+        /*TODO: Update the authenticated status to be true to redirect to dashboard */
+      }
+    } catch (error) {
+      console.error(error);
+      //TODO: redirect to the dashboard here
+    }
+  };
 
-        <Form.Group className="mb-3" controlId="formBasicPhone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control type="phone" placeholder="Enter Phone" />
-          <Form.Text className="text-muted">
-            We'll never share your number with anyone else.
-          </Form.Text>
-        </Form.Group>
+  const onSubmit = async (data) => {
+    const user = await Auth.currentAuthenticatedUser();
+    const status = await Auth.updateUserAttributes(user, data);
+    console.log(status);
+    const updateStatus = await Auth.verifyCurrentUserAttribute("email");
+    if (updateStatus === "SUCCESS") {
+      setHasVerification(true);
+    }
+  };
 
-        <Button variant="primary" type="submit">
-          Submit
+  const VerifiedContent = () => {
+    return (
+      <Form onSubmit={handleSubmit(submitVerificationCode)}>
+        {/* register your input into the hook by invoking the "register" function */}
+        <Form.Group className="mb-3">
+          <Form.Control
+            placeholder="Verification Code"
+            type="text"
+            {...register("verificationCode", { required: true })}
+          />
+        </Form.Group>
+        <Button type="submit" className="float-end">
+          Verify Account
         </Button>
       </Form>
+    );
+  };
+
+  return (
+    <div className="container mt-5">
+      {hasVerification ? (
+        <VerifiedContent />
+      ) : (
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Email"
+              {...register("email")}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      )}
     </div>
   );
 }

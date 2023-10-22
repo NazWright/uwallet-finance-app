@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Form } from "react-bootstrap";
 
-export default function SignIn({ authenticationHandler }) {
+export default function SignIn() {
   const {
     register,
     handleSubmit,
@@ -18,9 +18,8 @@ export default function SignIn({ authenticationHandler }) {
     console.log("data", data);
     try {
       Auth.signIn(data.email, data.password);
-      authenticationHandler(true);
     } catch (error) {
-      authenticationHandler(false);
+      console.error(error);
     }
   };
 

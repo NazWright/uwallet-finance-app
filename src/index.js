@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import Navbar from "./components/navbar/Navbar";
 import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 import Dashboard from "./components/dashboard/Dashboard";
