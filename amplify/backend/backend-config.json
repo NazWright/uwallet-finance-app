@@ -1,6 +1,22 @@
 {
+  "api": {
+    "financeapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "saveUser"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
-    "myexamplerepo12907d6f": {
+    "financialapplication5eada7f6": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -25,6 +41,83 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "dynamofinanceTrigger3aaacfcb": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "dynamofinance"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "saveUser": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "dynamofinance"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamofinanceTrigger3aaacfcb"
+        }
+      ]
+    },
+    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamofinanceTrigger3aaacfcb"
+        }
+      ]
+    },
+    "AMPLIFY_function_saveUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_saveUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveUser"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "dynamofinance": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

@@ -1,0 +1,12 @@
+{
+  "resourceName": "dynamofinance",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "dynamofinanceTrigger3aaacfcb"
+  ]
+}
