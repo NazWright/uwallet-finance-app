@@ -5,10 +5,12 @@ import {
   Heading,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
+import Navbar from "../navbar/Navbar";
 
 function Dashboard({ signOut }) {
   return (
     <div>
+      <Navbar />
       <Card>
         <Heading level={1}>We now have Auth!</Heading>
       </Card>
