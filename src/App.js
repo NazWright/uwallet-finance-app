@@ -16,6 +16,13 @@ function App() {
           break;
         case "signIn":
           console.log("user has signed in");
+          break;
+        case "signUp":
+          console.log("user has signed up for the application");
+          break;
+        case "signOut":
+          console.log("the user has signed out of the application.");
+          break;
       }
     });
 

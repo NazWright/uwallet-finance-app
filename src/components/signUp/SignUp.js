@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Button, Form } from "react-bootstrap";
 
 export default function SignUp() {
+  const [hasVerification, setHasVerification] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -23,20 +25,39 @@ export default function SignUp() {
         email: data.email,
       },
     });
+    setHasVerification(true);
   };
 
-  let formState = "signUp";
-
-  let formInputState = {
-    ...watch(),
-    verificationCode: "",
+  const submitVerificationCode = async (data) => {
+    if (!data.verificationCode) return;
+    const status = await Auth.confirmSignUp(data.email, data.verificationCode);
+    if ("SUCCESS" === status) {
+      console.info("User has been successfully confirmed.");
+      Auth.signIn(data.email, data.password);
+      /*TODO: Update the authenticated status to be true to redirect to dashboard */
+    }
   };
 
-  console.log(watch());
+  const VerifiedContent = () => {
+    return (
+      <Form onSubmit={handleSubmit(submitVerificationCode)}>
+        {/* register your input into the hook by invoking the "register" function */}
+        <Form.Group className="mb-3">
+          <Form.Control
+            placeholder="Verification Code"
+            type="text"
+            {...register("verificationCode", { required: true })}
+          />
+        </Form.Group>
+        <Button type="submit" className="float-end">
+          Verify Account
+        </Button>
+      </Form>
+    );
+  };
 
-  return (
-    <div className="container mt-5">
-      <h2 className="mb-4"> Sign Up </h2>
+  const UnverifiedSignUpContent = () => {
+    return (
       <Form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <Form.Group className="mb-3">
@@ -89,11 +110,31 @@ export default function SignUp() {
           {/* errors will return when field validation fails  */}
           {errors.password && <span>This field is required</span>}
         </Form.Group>
-
         <Button type="submit" className="float-end">
           Sign Up
         </Button>
       </Form>
+    );
+  };
+
+  let formState = "signUp";
+
+  let formInputState = {
+    ...watch(),
+    verificationCode: "",
+  };
+
+  const formValues = watch();
+
+  return (
+    <div className="container mt-5">
+      <h2 className="mb-4"> Sign Up </h2>
+      {hasVerification && (
+        <h5>
+          {`Please enter the verification code sent to ${formValues.email}`}
+        </h5>
+      )}
+      {hasVerification ? <VerifiedContent /> : <UnverifiedSignUpContent />}
     </div>
   );
 }
