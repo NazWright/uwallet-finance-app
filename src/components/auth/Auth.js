@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import SignUp from "../signUp/SignUp";
+import SignIn from "../signIn/SignIn";
 
 export default function Authentication() {
   return (
@@ -10,13 +11,10 @@ export default function Authentication() {
       className="mb-3"
     >
       <Tab eventKey="signIn" title="SignIn">
-        Tab content for Home
+        <SignIn />
       </Tab>
       <Tab eventKey="signUp" title="signUp">
         <SignUp />
-      </Tab>
-      <Tab eventKey="contact" title="Contact" disabled>
-        Tab content for Contact
       </Tab>
     </Tabs>
   );
