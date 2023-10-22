@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import SignUp from "./components/signUp/SignUp";
 import Dashboard from "./components/dashboard/Dashboard";
+import Authentication from "./components/auth/Auth";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -44,7 +45,7 @@ function App() {
       return <Dashboard user={authenticatedUser} />;
     }
 
-    return <SignUp />;
+    return <Authentication />;
   }
 
   return renderBasedOnAuth();
