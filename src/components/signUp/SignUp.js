@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Form } from "react-bootstrap";
+import { setUser } from "../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function SignUp() {
   const [hasVerification, setHasVerification] = useState(false);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -15,16 +18,18 @@ export default function SignUp() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Authenticating user: ");
+  const signUpSubmit = async (data) => {
+    console.log("Signing Up user... ");
     console.log("data", data);
-    Auth.signUp({
+    const status = await Auth.signUp({
       username: data.email,
       password: data.password,
       attributes: {
         email: data.email,
       },
     });
+    console.log(status);
+    dispatch(setUser(data));
     setHasVerification(true);
   };
 
@@ -58,7 +63,7 @@ export default function SignUp() {
 
   const UnverifiedSignUpContent = () => {
     return (
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(signUpSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <Form.Group className="mb-3">
           <Form.Control

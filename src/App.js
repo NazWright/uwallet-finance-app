@@ -4,9 +4,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import Dashboard from "./components/dashboard/Dashboard";
 import Authentication from "./components/auth/Auth";
 import Navbar from "./components/navbar/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, setAuthenticated } from "./features/auth/authSlice";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const user = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [authenticatedUser, setAuthenticatedUser] = useState(undefined);
 
   useEffect(() => {
@@ -31,16 +34,15 @@ function App() {
         const user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
 
-        console.dir(user);
-
         if (attributes.email && attributes.email_verified) {
-          setAuthenticated(true);
-          setAuthenticatedUser(user);
+          console.info("User has been authenticated...");
+          dispatch(setAuthenticated(true));
+          dispatch(setUser({ email: attributes.email }));
         }
       } catch (error) {
         console.error(error);
-        setAuthenticated(false);
-        setAuthenticatedUser(undefined);
+        dispatch(setAuthenticated(false));
+        dispatch(setUser(undefined));
       }
     }
 
@@ -48,8 +50,8 @@ function App() {
   }, []);
 
   function renderBasedOnAuth() {
-    if (authenticated && authenticatedUser) {
-      return <Dashboard user={authenticatedUser} />;
+    if (user.authenticated) {
+      return <Dashboard user={user.auth} />;
     }
 
     return <Authentication />;
@@ -57,7 +59,7 @@ function App() {
 
   return (
     <div>
-      {authenticated && <Navbar />}
+      {user.authenticated && <Navbar />}
       {renderBasedOnAuth()}
     </div>
   );

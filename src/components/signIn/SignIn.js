@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -13,11 +17,22 @@ export default function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Authenticating user from sign in: ");
     console.log("data", data);
     try {
-      Auth.signIn(data.email, data.password);
+      const authenticatedUserMeta = await Auth.signIn(
+        data.email,
+        data.password
+      );
+      const user = {
+        username: authenticatedUserMeta.username,
+        email: authenticatedUserMeta.attributes.email,
+        /* TODO: encrypt this password before storing in redux.*/
+        password: data.password,
+      };
+      dispatch(setAuthenticated(true));
+      dispatch(setUser(user));
     } catch (error) {
       console.error(error);
     }
