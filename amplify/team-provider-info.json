@@ -1,35 +1,23 @@
 {
-  "dev": {
+  "main": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-financialapplication-dev-145740-authRole",
-      "UnauthRoleArn": "arn:aws:iam::141951247906:role/amplify-financialapplication-dev-145740-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::141951247906:role/amplify-financialapplication-dev-145740-authRole",
+      "AuthRoleName": "amplify-financialapplication-main-53527-authRole",
+      "UnauthRoleArn": "arn:aws:iam::141951247906:role/amplify-financialapplication-main-53527-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::141951247906:role/amplify-financialapplication-main-53527-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-financialapplication-dev-145740-deployment",
-      "UnauthRoleName": "amplify-financialapplication-dev-145740-unauthRole",
-      "StackName": "amplify-financialapplication-dev-145740",
-      "StackId": "arn:aws:cloudformation:us-east-1:141951247906:stack/amplify-financialapplication-dev-145740/e17f59f0-710c-11ee-afdf-12a3410ba3cf",
-      "AmplifyAppId": "d3j1e7uxu9f6li"
+      "DeploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+      "UnauthRoleName": "amplify-financialapplication-main-53527-unauthRole",
+      "StackName": "amplify-financialapplication-main-53527",
+      "StackId": "arn:aws:cloudformation:us-east-1:141951247906:stack/amplify-financialapplication-main-53527/f7984f20-761c-11ee-af68-129fe7869fc9",
+      "AmplifyAppId": "d3k1mcd5nd8wjp"
     },
     "categories": {
-      "function": {
-        "saveUser": {
-          "deploymentBucketName": "amplify-financialapplication-dev-145740-deployment",
-          "s3Key": "amplify-builds/saveUser-35343772702f35726c43-build.zip"
-        },
-        "dynamofinanceTrigger3aaacfcb": {
-          "deploymentBucketName": "amplify-financialapplication-dev-145740-deployment",
-          "s3Key": "amplify-builds/dynamofinanceTrigger3aaacfcb-474b4f544d303778784f-build.zip"
-        }
-      },
-      "storage": {
-        "dynamofinance": {}
-      },
-      "api": {
-        "financeapi": {}
-      },
       "auth": {
         "financialapplication5eada7f6": {}
+      },
+      "function": {
+        "dynamofinanceTrigger3aaacfcb": {},
+        "saveUser": {}
       }
     }
   }

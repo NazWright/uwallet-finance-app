@@ -3,24 +3,17 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_dynamodb_all_tables_region": "us-east-1",
-    "aws_dynamodb_table_schemas": [
-        {
-            "tableName": "users-dev",
-            "region": "us-east-1"
-        }
-    ],
     "aws_cloud_logic_custom": [
         {
             "name": "financeapi",
-            "endpoint": "https://r0n4jxi1e7.execute-api.us-east-1.amazonaws.com/dev",
+            "endpoint": "https://vgbswacw11.execute-api.us-east-1.amazonaws.com/main",
             "region": "us-east-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "us-east-1:bb47957b-3696-4804-b7c7-fdd8bfca54a6",
+    "aws_cognito_identity_pool_id": "us-east-1:5f1cbfaf-23db-46f6-97f8-7d5a0367ee15",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_J84rtIgPS",
-    "aws_user_pools_web_client_id": "mm4i8s7mbjk0sqfgd27vl9tcd",
+    "aws_user_pools_id": "us-east-1_RNYfHyUKY",
+    "aws_user_pools_web_client_id": "2an0d40uirfamv3vbg8fh6ne9j",
     "oauth": {},
     "aws_cognito_username_attributes": [
         "EMAIL"
@@ -39,6 +32,13 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
+    ],
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "users-main",
+            "region": "us-east-1"
+        }
     ]
 };
 

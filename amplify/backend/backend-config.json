@@ -80,40 +80,6 @@
       "service": "Lambda"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "dynamofinanceTrigger3aaacfcb"
-        }
-      ]
-    },
-    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "dynamofinanceTrigger3aaacfcb"
-        }
-      ]
-    },
-    "AMPLIFY_function_saveUser_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "saveUser"
-        }
-      ]
-    },
-    "AMPLIFY_function_saveUser_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "saveUser"
-        }
-      ]
-    }
-  },
   "storage": {
     "dynamofinance": {
       "providerPlugin": "awscloudformation",

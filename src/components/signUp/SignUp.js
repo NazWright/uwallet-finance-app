@@ -26,6 +26,7 @@ export default function SignUp() {
       password: data.password,
       attributes: {
         email: data.email,
+        familyName: data.lastName,
       },
     });
     console.log(status);
