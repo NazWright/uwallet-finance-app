@@ -10,17 +10,20 @@ const awsmobile = {
             "region": "us-east-1"
         }
     ],
-    "aws_cognito_identity_pool_id": "us-east-1:5f1cbfaf-23db-46f6-97f8-7d5a0367ee15",
+    "aws_cognito_identity_pool_id": "us-east-1:1d2ac871-e34a-4981-9773-faba3e753ac6",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_RNYfHyUKY",
-    "aws_user_pools_web_client_id": "2an0d40uirfamv3vbg8fh6ne9j",
+    "aws_user_pools_id": "us-east-1_jdvjDtywU",
+    "aws_user_pools_web_client_id": "3gaf9d7ea5s7rnpeuqrao58pl6",
     "oauth": {},
     "aws_cognito_username_attributes": [
         "EMAIL"
     ],
     "aws_cognito_social_providers": [],
     "aws_cognito_signup_attributes": [
-        "EMAIL"
+        "EMAIL",
+        "FAMILY_NAME",
+        "GIVEN_NAME",
+        "PHONE_NUMBER"
     ],
     "aws_cognito_mfa_configuration": "OFF",
     "aws_cognito_mfa_types": [

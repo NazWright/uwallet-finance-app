@@ -1,8 +1,6 @@
 import React from "react";
-import { API, Hub, Auth } from "aws-amplify";
-import { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import "bootstrap/dist/css/bootstrap.css";
+import { Auth } from "aws-amplify";
+import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
@@ -13,13 +11,11 @@ export default function SignIn() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log("Authenticating user from sign in: ");
-    console.log("data", data);
+    console.info("Authenticating user from sign in: ");
     try {
       const authenticatedUserMeta = await Auth.signIn(
         data.email,
@@ -28,24 +24,18 @@ export default function SignIn() {
       const user = {
         username: authenticatedUserMeta.username,
         email: authenticatedUserMeta.attributes.email,
-        /* TODO: encrypt this password before storing in redux.*/
+        phone_number: authenticatedUserMeta.attributes.phone_number,
+        family_name: authenticatedUserMeta.attributes.family_name,
+        given_name: authenticatedUserMeta.attributes.given_name,
         password: data.password,
       };
+
       dispatch(setAuthenticated(true));
       dispatch(setUser(user));
     } catch (error) {
       console.error(error);
     }
   };
-
-  let formState = "signIn";
-
-  let formInputState = {
-    ...watch(),
-    verificationCode: "",
-  };
-
-  console.log(watch());
 
   return (
     <div className="container mt-5">
