@@ -1,5 +1,5 @@
 import { Hub, Auth } from "aws-amplify";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Dashboard from "./components/dashboard/Dashboard";
 import Authentication from "./components/auth/Auth";
@@ -10,7 +10,6 @@ import { setUser, setAuthenticated } from "./features/auth/authSlice";
 function App() {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [authenticatedUser, setAuthenticatedUser] = useState(undefined);
 
   useEffect(() => {
     Hub.listen("auth", (data) => {
@@ -31,8 +30,8 @@ function App() {
 
     async function checkUserAuthentication() {
       try {
-        const user = await Auth.currentAuthenticatedUser();
-        const { attributes } = user;
+        const amazonCognitoUserMeta = await Auth.currentAuthenticatedUser();
+        const { attributes } = amazonCognitoUserMeta;
 
         if (attributes.email && attributes.email_verified) {
           console.info("User has been authenticated...");
@@ -47,7 +46,7 @@ function App() {
     }
 
     checkUserAuthentication();
-  }, []);
+  }, [dispatch]);
 
   function renderBasedOnAuth() {
     if (user.authenticated) {
