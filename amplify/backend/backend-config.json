@@ -16,7 +16,7 @@
     }
   },
   "auth": {
-    "financialapplication5eada7f6": {
+    "financialappe284dc6a": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -29,7 +29,10 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "FAMILY_NAME",
+          "GIVEN_NAME",
+          "PHONE_NUMBER"
         ],
         "socialProviders": [],
         "usernameAttributes": [
@@ -78,6 +81,40 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamofinanceTrigger3aaacfcb"
+        }
+      ]
+    },
+    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamofinanceTrigger3aaacfcb"
+        }
+      ]
+    },
+    "AMPLIFY_function_saveUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_saveUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveUser"
+        }
+      ]
     }
   },
   "storage": {

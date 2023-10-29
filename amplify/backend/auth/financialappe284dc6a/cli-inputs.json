@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "financialapplication5eada7f6_identitypool_5eada7f6",
+    "identityPoolName": "financialappe284dc6a_identitypool_e284dc6a",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "financ5eada7f6",
-    "userPoolName": "financialapplication5eada7f6_userpool_5eada7f6",
+    "resourceNameTruncated": "finance284dc6a",
+    "userPoolName": "financialappe284dc6a_userpool_e284dc6a",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,7 +20,10 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "email",
+      "family_name",
+      "given_name",
+      "phone_number"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -31,15 +34,16 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "financ5eada7f6_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "finance284dc6a_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "5eada7f6",
-    "resourceName": "financialapplication5eada7f6",
+    "sharedId": "e284dc6a",
+    "resourceName": "financialappe284dc6a",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
+    "triggers": {},
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

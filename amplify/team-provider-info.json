@@ -12,12 +12,24 @@
       "AmplifyAppId": "d3k1mcd5nd8wjp"
     },
     "categories": {
-      "auth": {
-        "financialapplication5eada7f6": {}
-      },
       "function": {
-        "dynamofinanceTrigger3aaacfcb": {},
-        "saveUser": {}
+        "dynamofinanceTrigger3aaacfcb": {
+          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+          "s3Key": "amplify-builds/dynamofinanceTrigger3aaacfcb-474b4f544d303778784f-build.zip"
+        },
+        "saveUser": {
+          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+          "s3Key": "amplify-builds/saveUser-35343772702f35726c43-build.zip"
+        }
+      },
+      "storage": {
+        "dynamofinance": {}
+      },
+      "api": {
+        "financeapi": {}
+      },
+      "auth": {
+        "financialappe284dc6a": {}
       }
     }
   }
