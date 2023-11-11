@@ -6,6 +6,7 @@ import Authentication from "./components/auth/Auth";
 import Navbar from "./components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, setAuthenticated } from "./features/auth/authSlice";
+import "./App.css";
 
 function App() {
   const user = useSelector((state) => state.auth);
@@ -57,7 +58,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
       {user.authenticated && <Navbar />}
       {renderBasedOnAuth()}
     </div>

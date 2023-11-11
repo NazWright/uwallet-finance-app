@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
+import Verification from "../shared/verification/Verification";
 
 export default function SignUp() {
   const [needsVerification, setNeedsVerification] = useState(false);
@@ -59,24 +60,6 @@ export default function SignUp() {
         dispatch(setAuthenticated(false));
       }
     }
-  };
-
-  const VerifiedContent = () => {
-    return (
-      <Form onSubmit={handleSubmit(submitVerificationCode)}>
-        {/* register your input into the hook by invoking the "register" function */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            placeholder="Verification Code"
-            type="text"
-            {...register("verificationCode", { required: true })}
-          />
-        </Form.Group>
-        <Button type="submit" className="float-end">
-          Verify Account
-        </Button>
-      </Form>
-    );
   };
 
   const UnverifiedSignUpContent = () => {
@@ -150,7 +133,11 @@ export default function SignUp() {
           {`Please enter the verification code sent to ${formValues.email}`}
         </h5>
       )}
-      {needsVerification ? <VerifiedContent /> : <UnverifiedSignUpContent />}
+      {needsVerification ? (
+        <Verification submitVerificationCodeHandler={submitVerificationCode} />
+      ) : (
+        <UnverifiedSignUpContent />
+      )}
     </div>
   );
 }
