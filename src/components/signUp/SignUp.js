@@ -40,7 +40,7 @@ export default function SignUp() {
       });
 
       console.log(authenticatedUser);
-      dispatch(setUser({ signUpAttributes, password: data.password }));
+      dispatch(setUser({ ...signUpAttributes, password: data.password }));
       setNeedsVerification(true);
     } catch (error) {
       console.error(error);
@@ -51,14 +51,15 @@ export default function SignUp() {
 
   const submitVerificationCode = async (data) => {
     if (!data.verificationCode) return;
-    const email = currentUser.user.signUpAttributes.email;
+    const email = currentUser.user.email;
+    const password = currentUser.user.password;
 
     try {
       const status = await Auth.confirmSignUp(email, data.verificationCode);
       if ("SUCCESS" === status) {
         console.info("User has been successfully confirmed.");
         try {
-          Auth.signIn(email, data.password);
+          Auth.signIn(email, password);
           dispatch(setAuthenticated(true));
         } catch (error) {
           console.error("Sign In failed... See error message: ", error);
@@ -68,19 +69,6 @@ export default function SignUp() {
       }
     } catch (error) {
       console.error("Sign Up Confirmation Failed. See error message: ", error);
-    }
-
-    const status = await Auth.confirmSignUp(email, data.verificationCode);
-    if ("SUCCESS" === status) {
-      console.info("User has been successfully confirmed.");
-      try {
-        Auth.signIn(email, data.password);
-        dispatch(setAuthenticated(true));
-      } catch (error) {
-        console.error(error);
-        dispatch(setUser(undefined));
-        dispatch(setAuthenticated(false));
-      }
     }
   };
 
