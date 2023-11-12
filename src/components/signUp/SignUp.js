@@ -53,6 +53,23 @@ export default function SignUp() {
     if (!data.verificationCode) return;
     const email = currentUser.user.signUpAttributes.email;
 
+    try {
+      const status = await Auth.confirmSignUp(email, data.verificationCode);
+      if ("SUCCESS" === status) {
+        console.info("User has been successfully confirmed.");
+        try {
+          Auth.signIn(email, data.password);
+          dispatch(setAuthenticated(true));
+        } catch (error) {
+          console.error("Sign In failed... See error message: ", error);
+          dispatch(setUser(undefined));
+          dispatch(setAuthenticated(false));
+        }
+      }
+    } catch (error) {
+      console.error("Sign Up Confirmation Failed. See error message: ", error);
+    }
+
     const status = await Auth.confirmSignUp(email, data.verificationCode);
     if ("SUCCESS" === status) {
       console.info("User has been successfully confirmed.");
