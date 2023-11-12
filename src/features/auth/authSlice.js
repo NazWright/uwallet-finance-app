@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   authenticated: false,
-  auth: {
+  user: {
     given_name: "",
     family_name: "",
     email: "",
@@ -15,14 +15,14 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.auth = action.payload;
+      state.user = action.payload;
       // return action.payload;
     },
     setAuthenticated: (state, action) => {
       state.authenticated = action.payload;
     },
     getUser: (state) => {
-      return state.auth;
+      return state.user;
     },
   },
 });

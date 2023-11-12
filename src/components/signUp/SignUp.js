@@ -4,12 +4,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Verification from "../shared/verification/Verification";
 
 export default function SignUp() {
   const [needsVerification, setNeedsVerification] = useState(false);
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth);
+
+  console.dir(currentUser);
 
   const {
     register,
@@ -48,11 +51,13 @@ export default function SignUp() {
 
   const submitVerificationCode = async (data) => {
     if (!data.verificationCode) return;
-    const status = await Auth.confirmSignUp(data.email, data.verificationCode);
+    const email = currentUser.user.signUpAttributes.email;
+
+    const status = await Auth.confirmSignUp(email, data.verificationCode);
     if ("SUCCESS" === status) {
       console.info("User has been successfully confirmed.");
       try {
-        Auth.signIn(data.email, data.password);
+        Auth.signIn(email, data.password);
         dispatch(setAuthenticated(true));
       } catch (error) {
         console.error(error);

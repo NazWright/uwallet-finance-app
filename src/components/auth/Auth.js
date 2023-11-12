@@ -11,7 +11,6 @@ export default function Authentication() {
   return (
     <div className="login">
       <div>
-        {" "}
         <img
           className="application-logo"
           src={uWalletLogo}
@@ -20,17 +19,17 @@ export default function Authentication() {
       </div>
 
       <div>
-        <Card style={{ width: "18rem" }} className="auth-form-card">
+        <Card className="auth-form-card">
           <Card.Body>
             <Tabs
-              defaultActiveKey="profile"
+              defaultActiveKey="signin"
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab eventKey="home" title="Login">
+              <Tab eventKey="signin" title="Login">
                 <SignIn />
               </Tab>
-              <Tab eventKey="profile" title="Sign Up">
+              <Tab eventKey="signup" title="Sign Up">
                 <SignUp />
               </Tab>
             </Tabs>
