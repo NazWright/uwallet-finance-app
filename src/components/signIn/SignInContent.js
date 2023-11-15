@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
+import ForgotPasswordLink from "../shared/forgot-password/ForgotPasswordLink";
 
 export default function SignInContent({ triggerVerification }) {
   const dispatch = useDispatch();
@@ -68,6 +69,8 @@ export default function SignInContent({ triggerVerification }) {
           Sign In
         </Button>
       </Form>
+
+      <ForgotPasswordLink navigateTo={"/forgot-password"} />
     </div>
   );
 }

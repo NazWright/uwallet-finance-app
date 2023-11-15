@@ -59,6 +59,7 @@ export default function SignUp() {
       if ("SUCCESS" === status) {
         console.info("User has been successfully confirmed.");
         try {
+          /* TODO: encrypt password bc it is being stored in redux...*/
           Auth.signIn(email, password);
           dispatch(setAuthenticated(true));
         } catch (error) {
