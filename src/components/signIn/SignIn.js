@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SignInContent from "./SignInContent";
+import ForgotPasswordForm from "../shared/forgot-password/ForgotPasswordForm";
 
 export default function SignIn() {
-  return (
-    <div>
-      <SignInContent />
-    </div>
+  const [hasForgotPassword, setHasForgotPassword] = useState(false);
+
+  return hasForgotPassword ? (
+    <ForgotPasswordForm backToLoginTrigger={setHasForgotPassword} />
+  ) : (
+    <SignInContent forgotPasswordTrigger={setHasForgotPassword} />
   );
 }

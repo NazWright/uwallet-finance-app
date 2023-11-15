@@ -1,17 +1,18 @@
 import React from "react";
 import { Auth } from "aws-amplify";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
-import ForgotPasswordLink from "../shared/forgot-password/ForgotPasswordLink";
 
-export default function SignInContent({ triggerVerification }) {
+export default function SignInContent({ forgotPasswordTrigger }) {
   const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -70,7 +71,7 @@ export default function SignInContent({ triggerVerification }) {
         </Button>
       </Form>
 
-      <ForgotPasswordLink navigateTo={"/forgot-password"} />
+      <Link onClick={() => forgotPasswordTrigger(true)}>Forgot Password?</Link>
     </div>
   );
 }
