@@ -59,7 +59,6 @@ app.get("/payments/*", function (req, res) {
  ****************************/
 
 app.post("/payments", async function (req, res) {
-  console.log(process.env.PLAID_CLIENT_ID);
   // Add your code here
   const user = { id: 1 };
   const request = {
