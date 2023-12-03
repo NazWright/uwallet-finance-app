@@ -68,4 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # my-example-repo
+
+# Running Lambda Functions Locally
+
+Navigate to the amplify/backend/function and
+use the command: sam local invoke -e path/to/event/file -t path/to/cloud-formation/template(.json/.yml)

@@ -9,21 +9,17 @@
       "UnauthRoleName": "amplify-financialapplication-main-53527-unauthRole",
       "StackName": "amplify-financialapplication-main-53527",
       "StackId": "arn:aws:cloudformation:us-east-1:141951247906:stack/amplify-financialapplication-main-53527/f7984f20-761c-11ee-af68-129fe7869fc9",
-      "AmplifyAppId": "d3k1mcd5nd8wjp"
+      "AmplifyAppId": "d3k1mcd5nd8wjp",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-financialapplication-main-53527-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
-        "dynamofinanceTrigger3aaacfcb": {
+        "createPlaidAuthToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/dynamofinanceTrigger3aaacfcb-474b4f544d303778784f-build.zip"
-        },
-        "saveUser": {
-          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/saveUser-35343772702f35726c43-build.zip"
+          "s3Key": "amplify-builds/createPlaidAuthToken-49664c7a44525a786678-build.zip",
+          "plaidClientId": "655a2ac0bd746d001cc94993",
+          "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf"
         }
-      },
-      "storage": {
-        "dynamofinance": {}
       },
       "api": {
         "financeapi": {}

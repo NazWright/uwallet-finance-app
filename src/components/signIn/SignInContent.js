@@ -12,7 +12,6 @@ export default function SignInContent({ forgotPasswordTrigger }) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 

@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "saveUser"
+          "resourceName": "createPlaidAuthToken"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -47,80 +47,45 @@
     }
   },
   "function": {
-    "dynamofinanceTrigger3aaacfcb": {
+    "createPlaidAuthToken": {
       "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
-          "category": "storage",
-          "resourceName": "dynamofinance"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "saveUser": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "dynamofinance"
-        }
-      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_deploymentBucketName": {
+    "AMPLIFY_function_createPlaidAuthToken_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "dynamofinanceTrigger3aaacfcb"
+          "resourceName": "createPlaidAuthToken"
         }
       ]
     },
-    "AMPLIFY_function_dynamofinanceTrigger3aaacfcb_s3Key": {
+    "AMPLIFY_function_createPlaidAuthToken_plaidClientId": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "dynamofinanceTrigger3aaacfcb"
+          "resourceName": "createPlaidAuthToken"
         }
       ]
     },
-    "AMPLIFY_function_saveUser_deploymentBucketName": {
+    "AMPLIFY_function_createPlaidAuthToken_plaidClientSecretDev": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "saveUser"
+          "resourceName": "createPlaidAuthToken"
         }
       ]
     },
-    "AMPLIFY_function_saveUser_s3Key": {
+    "AMPLIFY_function_createPlaidAuthToken_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "saveUser"
+          "resourceName": "createPlaidAuthToken"
         }
       ]
     }
   },
-  "storage": {
-    "dynamofinance": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    }
-  }
+  "storage": {}
 }

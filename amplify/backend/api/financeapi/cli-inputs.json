@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/users": {
-      "name": "/users",
-      "lambdaFunction": "saveUser",
+    "/plaid": {
+      "name": "/plaid",
+      "lambdaFunction": "createPlaidAuthToken",
       "permissions": {
         "setting": "open"
       }

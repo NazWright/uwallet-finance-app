@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "API authenticatePayment:authenticatePayment",
+      "invokeTarget": {
+        "target": "api",
+        "templatePath": "${workspaceFolder}/amplify/backend/function/authenticatePayment/template.yml",
+        "logicalId": "authenticatePayment"
+      },
+      "api": {
+        "path": "/",
+        "httpMethod": "get",
+        "payload": {
+          "json": {}
+        }
+      }
+    }
+  ]
+}
