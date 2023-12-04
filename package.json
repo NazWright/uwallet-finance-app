@@ -2,6 +2,7 @@
   "name": "my-example",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@aws-amplify/ui-react": "^5.3.1",
     "@reduxjs/toolkit": "^1.9.7",

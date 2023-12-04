@@ -16,7 +16,7 @@
       "function": {
         "createPlaidAuthToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/createPlaidAuthToken-416d722b487a3131444e-build.zip",
+          "s3Key": "amplify-builds/createPlaidAuthToken-446c3054514c746e584a-build.zip",
           "plaidClientId": "655a2ac0bd746d001cc94993",
           "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf"
         }
