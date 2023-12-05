@@ -1,15 +1,15 @@
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
-export const handler = async (event) => {
-  const response = {
+exports.handler = async (event) => {
+  console.log(`EVENT: ${JSON.stringify(event)}`);
+  return {
     statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "https://www.example.com",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-    },
+    //  Uncomment below to enable CORS requests
+    //  headers: {
+    //      "Access-Control-Allow-Origin": "*",
+    //      "Access-Control-Allow-Headers": "*"
+    //  },
     body: JSON.stringify("Hello from Lambda!"),
   };
-  return response;
 };
