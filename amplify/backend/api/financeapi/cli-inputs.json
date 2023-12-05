@@ -7,13 +7,6 @@
       "permissions": {
         "setting": "open"
       }
-    },
-    "/payment-auth": {
-      "name": "/payment-auth",
-      "lambdaFunction": "fetchPlaidAuthToken",
-      "permissions": {
-        "setting": "open"
-      }
     }
   }
 }

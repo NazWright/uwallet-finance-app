@@ -19,12 +19,6 @@
           "s3Key": "amplify-builds/createPlaidAuthToken-34543538744c33694e61-build.zip",
           "plaidClientId": "655a2ac0bd746d001cc94993",
           "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf"
-        },
-        "fetchPlaidAuthToken": {
-          "plaidClientId": "655a2ac0bd746d001cc94993",
-          "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf",
-          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/fetchPlaidAuthToken-39664f385538764d614d-build.zip"
         }
       },
       "api": {

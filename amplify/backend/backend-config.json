@@ -9,14 +9,6 @@
           ],
           "category": "function",
           "resourceName": "createPlaidAuthToken"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "fetchPlaidAuthToken"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -59,12 +51,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "fetchPlaidAuthToken": {
-      "build": true,
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "parameters": {
@@ -97,38 +83,6 @@
         {
           "category": "function",
           "resourceName": "createPlaidAuthToken"
-        }
-      ]
-    },
-    "AMPLIFY_function_fetchPlaidAuthToken_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "fetchPlaidAuthToken"
-        }
-      ]
-    },
-    "AMPLIFY_function_fetchPlaidAuthToken_plaidClientId": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "fetchPlaidAuthToken"
-        }
-      ]
-    },
-    "AMPLIFY_function_fetchPlaidAuthToken_plaidClientSecretDev": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "fetchPlaidAuthToken"
-        }
-      ]
-    },
-    "AMPLIFY_function_fetchPlaidAuthToken_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "fetchPlaidAuthToken"
         }
       ]
     }
