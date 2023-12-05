@@ -24,11 +24,9 @@ export default function Dashboard({ user }) {
   }
 
   async function createPlaidAuthToken() {
-    const response = await API.post(
-      constants.FINANCEAPI,
-      "/createPlaidAuthToken-main/plaid",
-      {}
-    );
+    const response = await API.get(constants.FINANCEAPI, "/plaid", {
+      Headers: "",
+    });
     return response;
   }
 
