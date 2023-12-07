@@ -6,6 +6,10 @@ import { Button, Form } from "react-bootstrap";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Verification from "../shared/verification/Verification";
+import {
+  errorLogFormatter,
+  infoLogFormatter,
+} from "../../utils/infoLogFormatter";
 
 export default function SignUp() {
   const [needsVerification, setNeedsVerification] = useState(false);
@@ -22,8 +26,7 @@ export default function SignUp() {
   } = useForm();
 
   const signUpSubmit = async (data) => {
-    console.log("Signing Up user... ");
-    console.log("data", data);
+    infoLogFormatter("Starting sign up authentication process");
 
     const signUpAttributes = {
       email: data.email,
@@ -39,37 +42,45 @@ export default function SignUp() {
         attributes: signUpAttributes,
       });
 
-      console.log(authenticatedUser);
+      infoLogFormatter("Successfully authenticated new user.");
+      infoLogFormatter("Starting verification process...");
       dispatch(setUser({ ...signUpAttributes, password: data.password }));
       setNeedsVerification(true);
     } catch (error) {
-      console.error(error);
+      errorLogFormatter(error);
       dispatch(setUser(undefined));
       dispatch(setAuthenticated(false));
     }
   };
 
   const submitVerificationCode = async (data) => {
-    if (!data.verificationCode) return;
+    infoLogFormatter("verifying current user");
+    if (!data.verificationCode) {
+      infoLogFormatter("No verification code was specified during submission.");
+      return;
+    }
+
     const email = currentUser.user.email;
     const password = currentUser.user.password;
 
     try {
       const status = await Auth.confirmSignUp(email, data.verificationCode);
       if ("SUCCESS" === status) {
-        console.info("User has been successfully confirmed.");
+        infoLogFormatter("Email address has been successfully confirmed.");
         try {
           /* TODO: encrypt password bc it is being stored in redux...*/
           Auth.signIn(email, password);
           dispatch(setAuthenticated(true));
         } catch (error) {
-          console.error("Sign In failed... See error message: ", error);
+          errorLogFormatter(`Sign In failed... See error message: ${error}`);
           dispatch(setUser(undefined));
           dispatch(setAuthenticated(false));
         }
       }
     } catch (error) {
-      console.error("Sign Up Confirmation Failed. See error message: ", error);
+      errorLogFormatter(
+        `Sign Up Confirmation Failed. See error message: ${error}`
+      );
     }
   };
 

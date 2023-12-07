@@ -5,6 +5,10 @@ import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 import { constants } from "../../constants/applicationConstants";
 import {
+  errorLogFormatter,
+  infoLogFormatter,
+} from "../../utils/infoLogFormatter";
+import {
   usePlaidLink,
   PlaidLinkOptions,
   PlaidLinkOnSuccess,
@@ -19,12 +23,11 @@ export default function Dashboard({ accessToken }) {
 
   const config = {
     onSuccess: useCallback(async (public_token, metadata) => {
-      const response = await API.get(
+      infoLogFormatter("User has successfully authenticated with plaid");
+      const response = await API.post(
         constants.FINANCEAPI,
         "/plaid/access-token",
-        {
-          Headers: "",
-        }
+        JSON.stringify({ body: { public_token } })
       );
     }, []),
     onExit: (err, metadata) => {},
@@ -37,8 +40,8 @@ export default function Dashboard({ accessToken }) {
     try {
       open();
     } catch (caughtError) {
-      console.error(caughtError);
-      console.error(error);
+      errorLogFormatter(error.message);
+      errorLogFormatter(caughtError);
     }
   }
 
@@ -47,16 +50,15 @@ export default function Dashboard({ accessToken }) {
       await Auth.signOut();
       dispatch(setAuthenticated(false));
       dispatch(setUser(undefined));
-      console.info(
+      infoLogFormatter(
         "User has been successfully signed out. Redirecting to sign in..."
       );
     } catch (error) {
-      console.error(error);
+      errorLogFormatter(error);
       dispatch(setAuthenticated(false));
       dispatch(setUser(undefined));
     }
   }
-  console.log(accessToken);
 
   return (
     <div>

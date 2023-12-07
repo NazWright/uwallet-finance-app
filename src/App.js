@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUser, setAuthenticated } from "./features/auth/authSlice";
 import { constants } from "./constants/applicationConstants";
 import "./App.css";
+import { errorLogFormatter, infoLogFormatter } from "./utils/infoLogFormatter";
 
 function App() {
   const user = useSelector((state) => state.auth);
@@ -20,13 +21,13 @@ function App() {
         default:
           break;
         case "signIn":
-          console.info("user has signed in");
+          infoLogFormatter("User has triggered signIn event");
           break;
         case "signUp":
-          console.info("user has signed up for the application");
+          infoLogFormatter("User has triggered signUp event");
           break;
         case "signOut":
-          console.info("the user has signed out of the application.");
+          infoLogFormatter("User has triggered signOut event");
           break;
       }
     });
@@ -37,12 +38,12 @@ function App() {
         const { attributes } = amazonCognitoUserMeta;
 
         if (attributes.email && attributes.email_verified) {
-          console.info("User has been authenticated...");
+          infoLogFormatter("User has been successfully authenticated...");
           dispatch(setAuthenticated(true));
           dispatch(setUser({ email: attributes.email }));
         }
       } catch (error) {
-        console.error(error);
+        errorLogFormatter(error);
         dispatch(setAuthenticated(false));
         dispatch(setUser(undefined));
       }
@@ -54,14 +55,14 @@ function App() {
   useEffect(() => {
     async function fetchPlaidAccessToken() {
       const path = "/plaid";
-      console.info(
-        `Info from UI: Making API Request to ${path} to retrieve link token for env: sandbox`
+      infoLogFormatter(
+        `Making API Request to ${path} to retrieve link token for env: sandbox`
       );
       const response = await API.get(constants.FINANCEAPI, "/plaid", {
         Headers: "",
       });
-      console.info(
-        `Info From UI: Successfully retrieved plaid link token: ${response.linkToken}`
+      infoLogFormatter(
+        `Successfully retrieved plaid link token: ${response.linkToken}`
       );
       if (response.linkToken) {
         setLinkToken(response.linkToken);

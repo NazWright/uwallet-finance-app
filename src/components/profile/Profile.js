@@ -34,7 +34,6 @@ export default function Profile() {
   const onSubmit = async (data) => {
     const user = await Auth.currentAuthenticatedUser();
     const status = await Auth.updateUserAttributes(user, data);
-    console.log(status);
     const updateStatus = await Auth.verifyCurrentUserAttribute("email");
     if (updateStatus === "SUCCESS") {
       setHasVerification(true);

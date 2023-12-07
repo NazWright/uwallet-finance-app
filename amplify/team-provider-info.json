@@ -23,7 +23,7 @@
         },
         "fetchPlaidAccessToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/fetchPlaidAccessToken-6266706e2f7a52433536-build.zip"
+          "s3Key": "amplify-builds/fetchPlaidAccessToken-6530492b483071585831-build.zip"
         }
       },
       "api": {
