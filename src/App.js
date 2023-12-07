@@ -53,10 +53,16 @@ function App() {
 
   useEffect(() => {
     async function fetchPlaidAccessToken() {
+      const path = "/plaid";
+      console.info(
+        `Info from UI: Making API Request to ${path} to retrieve link token for env: sandbox`
+      );
       const response = await API.get(constants.FINANCEAPI, "/plaid", {
         Headers: "",
       });
-      console.log(response.linkToken);
+      console.info(
+        `Info From UI: Successfully retrieved plaid link token: ${response.linkToken}`
+      );
       if (response.linkToken) {
         setLinkToken(response.linkToken);
       }
