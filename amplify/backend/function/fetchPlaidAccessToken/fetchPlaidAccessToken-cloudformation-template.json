@@ -15,15 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "plaidClientSecretDev": {
-      "Type": "String"
-    },
-    "plaidClientSecretSandbox": {
-      "Type": "String"
-    },
-    "plaidClientId": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -56,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "createPlaidAuthToken",
+            "fetchPlaidAccessToken",
             {
               "Fn::Join": [
                 "",
                 [
-                  "createPlaidAuthToken",
+                  "fetchPlaidAccessToken",
                   "-",
                   {
                     "Ref": "env"
@@ -78,15 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "plaidClientSecretDev": {
-              "Ref": "plaidClientSecretDev"
-            },
-            "plaidClientSecretSandbox": {
-              "Ref": "plaidClientSecretSandbox"
-            },
-            "plaidClientId": {
-              "Ref": "plaidClientId"
             }
           }
         },
@@ -107,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "financialappLambdaRoleaf6bc61e",
+            "financialappLambdaRole4358ee18",
             {
               "Fn::Join": [
                 "",
                 [
-                  "financialappLambdaRoleaf6bc61e",
+                  "financialappLambdaRole4358ee18",
                   "-",
                   {
                     "Ref": "env"

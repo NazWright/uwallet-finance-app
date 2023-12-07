@@ -16,9 +16,14 @@
       "function": {
         "createPlaidAuthToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/createPlaidAuthToken-34543538744c33694e61-build.zip",
-          "plaidClientId": "655a2ac0bd746d001cc94993",
-          "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf"
+          "s3Key": "amplify-builds/createPlaidAuthToken-49316d6c547656376678-build.zip",
+          "plaidClientSecretDev": "e6fc5ca6f0a59aa2ec71c3737961bf",
+          "plaidClientSecretSandbox": "e0c5c16d5ae70638bd01b7daa95bfb",
+          "plaidClientId": "655a2ac0bd746d001cc94993"
+        },
+        "fetchPlaidAccessToken": {
+          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+          "s3Key": "amplify-builds/fetchPlaidAccessToken-6266706e2f7a52433536-build.zip"
         }
       },
       "api": {

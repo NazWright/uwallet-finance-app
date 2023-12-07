@@ -9,6 +9,7 @@
     "@types/aws-lambda": "^8.10.92"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "plaid": "^18.1.0"
   }
 }

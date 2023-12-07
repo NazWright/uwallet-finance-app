@@ -1,16 +1,18 @@
-import { Hub, Auth } from "aws-amplify";
-import { useEffect } from "react";
+import { Hub, Auth, API } from "aws-amplify";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Dashboard from "./components/dashboard/Dashboard";
 import Authentication from "./components/auth/Auth";
 import Navbar from "./components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, setAuthenticated } from "./features/auth/authSlice";
+import { constants } from "./constants/applicationConstants";
 import "./App.css";
 
 function App() {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [linkToken, setLinkToken] = useState("");
 
   useEffect(() => {
     Hub.listen("auth", (data) => {
@@ -49,9 +51,22 @@ function App() {
     checkUserAuthentication();
   }, [dispatch]);
 
+  useEffect(() => {
+    async function fetchPlaidAccessToken() {
+      const response = await API.get(constants.FINANCEAPI, "/plaid", {
+        Headers: "",
+      });
+      console.log(response.linkToken);
+      if (response.linkToken) {
+        setLinkToken(response.linkToken);
+      }
+    }
+    fetchPlaidAccessToken();
+  }, []);
+
   function renderBasedOnAuth() {
     if (user.authenticated) {
-      return <Dashboard user={user.auth} />;
+      return <Dashboard user={user.auth} accessToken={linkToken} />;
     }
 
     return <Authentication />;
