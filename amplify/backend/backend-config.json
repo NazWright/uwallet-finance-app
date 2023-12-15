@@ -17,6 +17,14 @@
           ],
           "category": "function",
           "resourceName": "fetchPlaidAccessToken"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "fetchPlaidAccountInformation"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -61,6 +69,11 @@
       "service": "Lambda"
     },
     "fetchPlaidAccessToken": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "fetchPlaidAccountInformation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -120,6 +133,22 @@
         {
           "category": "function",
           "resourceName": "fetchPlaidAccessToken"
+        }
+      ]
+    },
+    "AMPLIFY_function_fetchPlaidAccountInformation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fetchPlaidAccountInformation"
+        }
+      ]
+    },
+    "AMPLIFY_function_fetchPlaidAccountInformation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fetchPlaidAccountInformation"
         }
       ]
     }

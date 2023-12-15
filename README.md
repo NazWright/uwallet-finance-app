@@ -75,3 +75,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Navigate to the amplify/backend/function and
 use the command: sam local invoke -e path/to/event/file -t path/to/cloud-formation/template(.json/.yml)
+
+sudo chown -R nazerewright

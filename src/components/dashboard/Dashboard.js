@@ -1,5 +1,5 @@
 import { Auth, API } from "aws-amplify";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
@@ -13,6 +13,7 @@ import {
   PlaidLinkOptions,
   PlaidLinkOnSuccess,
 } from "react-plaid-link";
+import BottomNavbar from "../bottom-navbar/BottomNavbar";
 
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
@@ -20,16 +21,28 @@ import {
 
 export default function Dashboard({ accessToken }) {
   const dispatch = useDispatch();
+  const [plaidAccessToken, setPlaidAccessToken] = useState("");
 
   const config = {
-    onSuccess: useCallback(async (public_token, metadata) => {
-      infoLogFormatter("User has successfully authenticated with plaid");
-      const response = await API.post(
-        constants.FINANCEAPI,
-        "/plaid/access-token",
-        JSON.stringify({ body: { public_token } })
-      );
-    }, []),
+    onSuccess: async (public_token, metadata) => {
+      try {
+        infoLogFormatter("Successfully retrieved public token");
+        infoLogFormatter(
+          `Fetching plaid accessToken using public token: ${public_token}`
+        );
+        const response = await API.post(
+          constants.FINANCEAPI,
+          "/plaid/access-token",
+          { body: { publicToken: public_token } }
+        );
+        setPlaidAccessToken(response.accessToken);
+        infoLogFormatter(
+          `successfully retrieved plaid accessToken: ${response.accessToken}`
+        );
+      } catch (error) {
+        errorLogFormatter(error);
+      }
+    },
     onExit: (err, metadata) => {},
     onEvent: (eventName, metadata) => {},
     token: accessToken,
@@ -60,11 +73,16 @@ export default function Dashboard({ accessToken }) {
     }
   }
 
+  async function retrieveAccountData() {
+    const response = await API.post(constants.FINANCEAPI, "/plaid/accounts", {
+      body: { accessToken: plaidAccessToken },
+    });
+    console.dir(response);
+  }
+
   return (
     <div>
-      Welcome
-      <Button onClick={onSignOut}>Sign Out</Button>
-      <Button onClick={openPlaidAuthenticationPortal}>Auth with Plaid</Button>
+      <BottomNavbar />
     </div>
   );
 }

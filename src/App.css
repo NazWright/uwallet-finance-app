@@ -32,3 +32,9 @@ body {
   border-radius: 5%;
   box-shadow: 1px 1px 5px grey;
 }
+
+.bottom-navbar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
