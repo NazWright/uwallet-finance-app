@@ -142,12 +142,14 @@
 .screen-14 .group-141 {
   background-image: url(../../static/img/path-17-1.png);
   background-position: 50% 50%;
+  background-color: transparent;
   background-size: cover;
   height: 46px;
   left: 70px;
   position: absolute;
   top: 275px;
   width: 175px;
+  border: none;
 }
 
 .screen-14 .text-wrapper-183 {
