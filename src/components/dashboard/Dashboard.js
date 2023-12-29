@@ -13,8 +13,10 @@ import {
   PlaidLinkOptions,
   PlaidLinkOnSuccess,
 } from "react-plaid-link";
-import BottomNavbar from "../bottom-navbar/BottomNavbar";
-
+import "./Dashboard.css";
+import StatusBar from "./StatusBar";
+import ProfileToolTip from "./ProfileToolTip";
+import DashboardContent from "./DashboardContent";
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
 // instead, on unmount it automatically destroys the Link instance
@@ -82,8 +84,13 @@ export default function Dashboard({ accessToken }) {
 
   return (
     <div>
-      <Button onClick={onSignOut}> Sign out</Button>
-      <BottomNavbar />
+      <div className="home-page">
+        <div className="div-3">
+          <DashboardContent />
+          <StatusBar />
+          <ProfileToolTip />
+        </div>
+      </div>
     </div>
   );
 }
