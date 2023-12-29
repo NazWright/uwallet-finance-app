@@ -82,6 +82,7 @@ export default function Dashboard({ accessToken }) {
 
   return (
     <div>
+      <Button onClick={onSignOut}> Sign out</Button>
       <BottomNavbar />
     </div>
   );

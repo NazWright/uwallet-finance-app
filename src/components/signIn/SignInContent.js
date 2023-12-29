@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
+import "./SignIn.css";
+import uWalletLoginImage from "../../static/img/untitled-design-36-3.png";
+import SignInFormContent from "./SignInForm";
 
 export default function SignInContent({ forgotPasswordTrigger }) {
   const dispatch = useDispatch();
@@ -39,38 +42,40 @@ export default function SignInContent({ forgotPasswordTrigger }) {
     }
   };
 
-  return (
-    <div className="container mt-5">
-      <h2 className="mb-4"> Sign In </h2>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            placeholder="Email Address"
-            type="email"
-            {...register("email", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.email && <span>This field is required</span>}
-        </Form.Group>
-
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            {...register("password", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.password && <span>This field is required</span>}
-        </Form.Group>
-
-        <Button type="submit" className="float-end">
-          Sign In
-        </Button>
-      </Form>
-
-      <Link onClick={() => forgotPasswordTrigger(true)}>Forgot Password?</Link>
-    </div>
-  );
+  return <SignInFormContent forgotPasswordTrigger={forgotPasswordTrigger} />;
 }
+
+// return (
+//   <div className="container mt-5">
+//     <h2 className="mb-4"> Sign In </h2>
+//     <Form onSubmit={handleSubmit(onSubmit)}>
+//       {/* include validation with required or other standard HTML validation rules */}
+//       <Form.Group className="mb-3">
+//         <Form.Control
+//           placeholder="Email Address"
+//           type="email"
+//           {...register("email", { required: true })}
+//         />
+//         {/* errors will return when field validation fails  */}
+//         {errors.email && <span>This field is required</span>}
+//       </Form.Group>
+
+//       {/* include validation with required or other standard HTML validation rules */}
+//       <Form.Group className="mb-3">
+//         <Form.Control
+//           type="password"
+//           placeholder="Password"
+//           {...register("password", { required: true })}
+//         />
+//         {/* errors will return when field validation fails  */}
+//         {errors.password && <span>This field is required</span>}
+//       </Form.Group>
+
+//       <Button type="submit" className="float-end">
+//         Sign In
+//       </Button>
+//     </Form>
+
+//     <Link onClick={() => forgotPasswordTrigger(true)}>Forgot Password?</Link>
+//   </div>
+// );
