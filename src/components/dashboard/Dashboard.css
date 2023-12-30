@@ -960,45 +960,17 @@
   box-shadow: 0px 3px 6px #7b7b7b29;
   height: 59px;
   left: 2px;
-  position: absolute;
-  top: 726px;
-  width: 428px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.home-page .element-13 {
-  height: 77px;
-  left: 19px;
+.home-page .footer-icon {
+  height: auto;
   object-fit: cover;
-  position: absolute;
-  top: 717px;
-  width: 103px;
-}
-
-.home-page .element-14 {
-  height: 87px;
-  left: 100px;
-  object-fit: cover;
-  position: absolute;
-  top: 712px;
-  width: 116px;
-}
-
-.home-page .element-15 {
-  height: 85px;
-  left: 216px;
-  object-fit: cover;
-  position: absolute;
-  top: 709px;
-  width: 113px;
-}
-
-.home-page .element-16 {
-  height: 109px;
-  left: 285px;
-  object-fit: cover;
-  position: absolute;
-  top: 696px;
-  width: 145px;
+  width: auto;
 }
 
 .home-page .scroll-group-3 {

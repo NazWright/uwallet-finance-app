@@ -8,7 +8,8 @@ body {
 
 #root {
   height: 100%;
-  overflow: hidden;
+  /* should be able to scroll vertically and not horizontally */
+  overflow-x: hidden;
 }
 
 .App {
