@@ -1,4 +1,5 @@
 import React from "react";
+import profileImage from "../../static/img/clip-4.png";
 
 export default function ProfileToolTip() {
   return (
@@ -8,7 +9,7 @@ export default function ProfileToolTip() {
           <div className="image">
             <div className="ellipse-6">
               <div className="clip-wrapper">
-                <img className="clip" alt="Clip" src="/img/clip-4.png" />
+                <img className="clip" alt="Clip" src={profileImage} />
               </div>
             </div>
           </div>
