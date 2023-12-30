@@ -15,8 +15,8 @@
         "setting": "open"
       }
     },
-    "/plaid/accounts": {
-      "name": "/plaid/accounts",
+    "/accounts": {
+      "name": "/accounts",
       "lambdaFunction": "fetchPlaidAccountInformation",
       "permissions": {
         "setting": "open"

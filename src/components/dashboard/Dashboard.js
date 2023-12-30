@@ -1,7 +1,7 @@
 import { Auth, API } from "aws-amplify";
 import React, { useCallback, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 import { constants } from "../../constants/applicationConstants";
 import {
@@ -17,13 +17,21 @@ import "./Dashboard.css";
 import StatusBar from "./StatusBar";
 import ProfileToolTip from "./ProfileToolTip";
 import DashboardContent from "./DashboardContent";
+import { setPlaidAccessToken } from "../../features/plaid/plaidSlice";
+import { default as accountsGetResponseJson } from "../../data/accountsGetResponse.json";
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
 // instead, on unmount it automatically destroys the Link instance
 
 export default function Dashboard({ accessToken }) {
   const dispatch = useDispatch();
-  const [plaidAccessToken, setPlaidAccessToken] = useState("");
+  const plaidAccessToken = useSelector(
+    (state) => state.plaidAuth.plaidAccessToken
+  );
+
+  const { accounts } = accountsGetResponseJson;
+
+  console.log(accounts);
 
   const config = {
     onSuccess: async (public_token, metadata) => {
@@ -37,7 +45,7 @@ export default function Dashboard({ accessToken }) {
           "/plaid/access-token",
           { body: { publicToken: public_token } }
         );
-        setPlaidAccessToken(response.accessToken);
+        dispatch(setPlaidAccessToken(response.accessToken));
         infoLogFormatter(
           `successfully retrieved plaid accessToken: ${response.accessToken}`
         );
@@ -75,19 +83,23 @@ export default function Dashboard({ accessToken }) {
     }
   }
 
-  async function retrieveAccountData() {
-    const response = await API.post(constants.FINANCEAPI, "/plaid/accounts", {
-      body: { accessToken: plaidAccessToken },
-    });
-    console.dir(response);
-  }
+  // async function retrieveAccountData() {
+  //   const response = await API.post(constants.FINANCEAPI, "/accounts", {
+  //     body: {
+  //       accessToken: "access-sandbox-052ae6f0-1fb0-4ebf-a157-8c63a1552134",
+  //     },
+  //   });
+  //   console.dir(response);
+  // }
 
   return (
     <div>
       <div className="home-page">
         <div className="div-3">
-          <DashboardContent />
-          <StatusBar />
+          <DashboardContent
+            addNewCardHandler={openPlaidAuthenticationPortal}
+            accounts={accounts}
+          />
           <ProfileToolTip />
         </div>
       </div>

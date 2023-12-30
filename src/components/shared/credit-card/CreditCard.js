@@ -11,6 +11,7 @@ export default function CreditCard({
   cardNumber,
   cardHolderName,
   validThru,
+  addNewCardHandler,
 }) {
   return (
     <>

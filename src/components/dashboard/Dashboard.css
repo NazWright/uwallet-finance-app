@@ -1630,14 +1630,14 @@
   width: 38px;
 }
 
-.home-page .rectangle-25 {
+.home-page .add-new-card {
   background-color: #e3e3e3;
   border-radius: 9px;
   height: 172px;
   left: 0;
   opacity: 0.53;
   position: absolute;
-  top: 0;
+  top: -7px;
   width: 38px;
 }
 

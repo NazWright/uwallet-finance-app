@@ -19,9 +19,7 @@ exports.handler = async (event) => {
     console.info("Connecting to plaid client...");
     const client = new PlaidApi(configuration);
 
-    console.info(
-      "Successfully connected to plaid client. Exchanging public token for access token."
-    );
+    console.info("Successfully connected to plaid client.");
 
     const body = JSON.parse(event.body);
     const accessToken = body.accessToken;
@@ -47,5 +45,10 @@ exports.handler = async (event) => {
       //  },
       body: JSON.stringify(accountsResponse.data),
     };
-  } catch (error) {}
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error),
+    };
+  }
 };

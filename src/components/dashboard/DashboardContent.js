@@ -7,7 +7,10 @@ import MyBalance from "./MyBalance";
 import AdditionalCards from "./AdditionalCards";
 import Footer from "./Footer";
 
-export default function DashboardContent() {
+export default function DashboardContent({ addNewCardHandler, accounts }) {
+  const account = accounts[0];
+  const { balances } = account;
+
   return (
     <>
       <div className="overlap-14">
@@ -19,16 +22,17 @@ export default function DashboardContent() {
           {/* Credit card */}
           <div className="scroll-group-3">
             <CreditCard
+              addNewCardHandler={addNewCardHandler}
               index={3}
-              cardNumber={4765}
+              cardNumber={account.mask}
               validThru={"02 / 25"}
               cardHolderName={"Emery Murrain"}
             />
           </div>
           {/* Credit card End */}
-          <MyBalance />
+          <MyBalance balance={balances.available + balances.current} />
         </div>
-        <AdditionalCards />
+        <AdditionalCards addNewCardHandler={addNewCardHandler} />
         <Footer />
       </div>
     </>
