@@ -2,7 +2,7 @@ import React from "react";
 import debtToAccountIcon from "../../../static/img/untitled-design-26-54.png";
 import creditToAccountIcon from "../../../static/img/untitled-design-26-51.png";
 
-export default function RecentTransaction({
+function RecentTransaction({
   isExpense = true,
   amount,
   currency,
@@ -33,3 +33,5 @@ export default function RecentTransaction({
     </div>
   );
 }
+
+export default React.memo(RecentTransaction);
