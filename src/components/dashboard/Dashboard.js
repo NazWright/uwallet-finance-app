@@ -30,6 +30,10 @@ export default function Dashboard({ accessToken }) {
     (state) => state.plaidAuth.plaidAccessToken
   );
 
+  const userMeta = useSelector((state) => state.auth);
+
+  const { user } = userMeta;
+
   const { accounts } = accountsGetResponseJson;
 
   console.log(accounts);
@@ -103,8 +107,9 @@ export default function Dashboard({ accessToken }) {
             addNewCardHandler={openPlaidAuthenticationPortal}
             accounts={accounts}
             transactions={transactions}
+            cardHolderName={`${user.given_name} ${user.family_name}`}
           />
-          <ProfileToolTip />
+          <ProfileToolTip firstName={user.given_name} />
         </div>
       </div>
     </div>

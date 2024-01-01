@@ -1,7 +1,7 @@
 import React from "react";
 import profileImage from "../../static/img/clip-4.png";
 
-export default function ProfileToolTip() {
+export default function ProfileToolTip({ firstName }) {
   return (
     <>
       <div className="group-44">
@@ -13,7 +13,7 @@ export default function ProfileToolTip() {
               </div>
             </div>
           </div>
-          <div className="exchange-rates-2">Hi, Jamie </div>
+          <div className="exchange-rates-2">{`Hi, ${firstName}`} </div>
         </div>
       </div>
     </>
