@@ -15,6 +15,15 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "plaidClientId": {
+      "Type": "String"
+    },
+    "plaidClientSecretDev": {
+      "Type": "String"
+    },
+    "plaidClientSecretSandbox": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -69,6 +78,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "plaidClientId": {
+              "Ref": "plaidClientId"
+            },
+            "plaidClientSecretDev": {
+              "Ref": "plaidClientSecretDev"
+            },
+            "plaidClientSecretSandbox": {
+              "Ref": "plaidClientSecretSandbox"
             }
           }
         },

@@ -2,16 +2,16 @@
   "lambdaLayers": [],
   "environmentVariableList": [
     {
-      "cloudFormationParameterName": "plaidClientSecretDev",
-      "environmentVariableName": "plaidClientSecretDev"
+      "cloudFormationParameterName": "plaidClientId",
+      "environmentVariableName": "plaidClientId"
     },
     {
       "cloudFormationParameterName": "plaidClientSecretSandbox",
       "environmentVariableName": "plaidClientSecretSandbox"
     },
     {
-      "cloudFormationParameterName": "plaidClientId",
-      "environmentVariableName": "plaidClientId"
+      "cloudFormationParameterName": "plaidClientSecretDev",
+      "environmentVariableName": "plaidClientSecretDev"
     }
   ]
 }

@@ -10,8 +10,8 @@ exports.handler = async (event) => {
       basePath: PlaidEnvironments.sandbox,
       baseOptions: {
         headers: {
-          "PLAID-CLIENT-ID": "655a2ac0bd746d001cc94993",
-          "PLAID-SECRET": "e0c5c16d5ae70638bd01b7daa95bfb",
+          "PLAID-CLIENT-ID": process.env.plaidClientId,
+          "PLAID-SECRET": process.env.plaidClientSecretSandbox,
         },
       },
     });
