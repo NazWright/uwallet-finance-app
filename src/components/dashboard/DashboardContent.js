@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import SpendingActivity from "./SpendingActivity";
 import SendRequestMoney from "./SendRequestMoney";
 import RecentTransactionsList from "./recentTransactions/RecentTransactionsList";
@@ -15,6 +16,10 @@ export default function DashboardContent({
   const account = accounts[0];
   const { balances } = account;
 
+  const userMeta = useSelector((state) => state.auth);
+
+  const { user } = userMeta;
+
   return (
     <>
       <div className="overlap-14">
@@ -29,8 +34,8 @@ export default function DashboardContent({
               addNewCardHandler={addNewCardHandler}
               index={3}
               cardNumber={account.mask}
-              validThru={"02 / 25"}
-              cardHolderName={"Emery Murrain"}
+              validThru={"** / **"}
+              cardHolderName={`${user.given_name} ${user.family_name}`}
             />
           </div>
           {/* Credit card End */}

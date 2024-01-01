@@ -40,7 +40,14 @@ function App() {
         if (attributes.email && attributes.email_verified) {
           infoLogFormatter("User has been successfully authenticated...");
           dispatch(setAuthenticated(true));
-          dispatch(setUser({ email: attributes.email }));
+          dispatch(
+            setUser({
+              email: attributes.email,
+              family_name: attributes.family_name,
+              phone_number: attributes.phone_number,
+              given_name: attributes.given_name,
+            })
+          );
         }
       } catch (error) {
         errorLogFormatter(error);
