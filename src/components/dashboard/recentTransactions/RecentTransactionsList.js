@@ -5,10 +5,8 @@ import incomesIcon from "../../../static/img/14-6.png";
 import RecentTransaction from "./RecentTransaction";
 
 export default function RecentTransactionsList({ expenses, incomes }) {
-  const [allRecentTransactionsSelected, setAllRecentTransactionsSelected] =
-    useState(true);
-  const [expenseOnlyTransactionsSelected, setExpenseOnlyTransactionsSelected] =
-    useState(false);
+  /* all | expenses | incomes */
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   function filterTransactions() {
     const expensesWithFlag = expenses.map((expense) => {
@@ -25,15 +23,11 @@ export default function RecentTransactionsList({ expenses, incomes }) {
       };
     });
 
-    if (allRecentTransactionsSelected) {
-      return [...expensesWithFlag, ...incomesWithFlag];
-    } else {
-      if (expenseOnlyTransactionsSelected) {
-        return expensesWithFlag;
-      } else {
-        return incomesWithFlag;
-      }
-    }
+    return selectedFilter === "all"
+      ? [...expensesWithFlag, ...incomesWithFlag]
+      : selectedFilter === "expenses"
+      ? expensesWithFlag
+      : incomesWithFlag;
   }
 
   const displayedTransactions = filterTransactions();
@@ -43,13 +37,26 @@ export default function RecentTransactionsList({ expenses, incomes }) {
       <div className="payment-history">Recent Transactions</div>
       <img className="path-16" alt="Path" src={allRecentTransactionsButton} />
       <div className="rectangle-13" />
-      <div className="payment-history-2">All</div>
+      <button
+        style={{ border: "none", background: "transparent" }}
+        className="payment-history-2"
+        onClick={(event) => {
+          setSelectedFilter("all");
+        }}
+      >
+        All
+      </button>
       <div className="rectangle-14" />
       <div className="overlap-group-wrapper">
-        <div className="overlap-18">
+        <button
+          style={{ border: "none" }}
+          onClick={(event) => {
+            setSelectedFilter("incomes");
+          }}
+        >
           <div className="payment-history-3">Incomes</div>
           <img className="element-3" alt="Element" src={incomesIcon} />
-        </div>
+        </button>
       </div>
       <div className="scroll-group-2">
         {displayedTransactions.map((transaction) => {
@@ -67,10 +74,15 @@ export default function RecentTransactionsList({ expenses, incomes }) {
       </div>
 
       <div className="group-37">
-        <div className="overlap-18">
+        <button
+          style={{ border: "none" }}
+          onClick={(event) => {
+            setSelectedFilter("expenses");
+          }}
+        >
           <div className="payment-history-4">Expenses</div>
           <img className="element-12" alt="Element" src={expensesIcon} />
-        </div>
+        </button>
       </div>
     </>
   );
