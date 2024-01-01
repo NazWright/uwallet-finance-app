@@ -7,7 +7,11 @@ import MyBalance from "./MyBalance";
 import AdditionalCards from "./AdditionalCards";
 import Footer from "./Footer";
 
-export default function DashboardContent({ addNewCardHandler, accounts }) {
+export default function DashboardContent({
+  addNewCardHandler,
+  accounts,
+  transactions,
+}) {
   const account = accounts[0];
   const { balances } = account;
 
@@ -18,7 +22,7 @@ export default function DashboardContent({ addNewCardHandler, accounts }) {
         <div className="overlap-15">
           <SpendingActivity />
           <SendRequestMoney />
-          <RecentTransactionsList />
+          <RecentTransactionsList expenses={transactions} incomes={[]} />
           {/* Credit card */}
           <div className="scroll-group-3">
             <CreditCard

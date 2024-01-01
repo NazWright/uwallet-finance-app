@@ -29,7 +29,7 @@ make a file that will get the right client secret for the right env */
       client_name: "Plaid Test App",
       products: ["auth"],
       language: "en",
-      redirect_uri: "https://main.djtegc4mzj3vp.amplifyapp.com/",
+      redirect_uri: "https://main.d3k1mcd5nd8wjp.amplifyapp.com/",
       country_codes: ["US"],
     };
     console.info(`Fetching Plaid link token...`);
@@ -39,10 +39,11 @@ make a file that will get the right client secret for the right env */
     return {
       statusCode: 200,
       //  Uncomment below to enable CORS requests
-      //  headers: {
-      //      "Access-Control-Allow-Origin": "*",
-      //      "Access-Control-Allow-Headers": "*"
-      //  },
+      headers: {
+        "Access-Control-Allow-Origin":
+          "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent",
+        "Access-Control-Allow-Headers": "*",
+      },
       body: JSON.stringify({ linkToken }),
     };
   } catch (error) {
@@ -50,22 +51,3 @@ make a file that will get the right client secret for the right env */
     console.error(error);
   }
 };
-
-async function createPlaidDevelopmentToken(client) {
-  const linkTokenRequest = {
-    user: {
-      // This should correspond to a unique id for the current user.
-      client_user_id: 1,
-    },
-    client_name: "Plaid Test App",
-    products: ["auth"],
-    language: "en",
-    redirect_uri: "https://domainname.com/oauth-page.html",
-    country_codes: ["US"],
-  };
-
-  client.linkTokenCreate(linkTokenRequest);
-
-  const linkTokenResponse = await client(linkTokenRequest);
-  return linkTokenResponse;
-}

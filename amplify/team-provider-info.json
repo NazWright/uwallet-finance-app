@@ -16,21 +16,21 @@
       "function": {
         "createPlaidAuthToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/createPlaidAuthToken-49316d6c547656376678-build.zip",
+          "s3Key": "amplify-builds/createPlaidAuthToken-593138714e6365444c45-build.zip",
           "plaidClientId": "65932bc3312862001cd79cd9",
           "plaidClientSecretSandbox": "bde2fcf223a8e6f1340c639df05c66",
           "plaidClientSecretDev": "d923b348398c77de63f02c226e5f88"
         },
         "fetchPlaidAccessToken": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/fetchPlaidAccessToken-796236566a424d354a66-build.zip",
+          "s3Key": "amplify-builds/fetchPlaidAccessToken-622b6473624f45755744-build.zip",
           "plaidClientId": "65932bc3312862001cd79cd9",
           "plaidClientSecretDev": "d923b348398c77de63f02c226e5f88",
           "plaidClientSecretSandbox": "bde2fcf223a8e6f1340c639df05c66"
         },
         "fetchPlaidAccountInformation": {
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/fetchPlaidAccountInformation-4f3631774a6459465151-build.zip",
+          "s3Key": "amplify-builds/fetchPlaidAccountInformation-44785649375931576447-build.zip",
           "plaidClientId": "65932bc3312862001cd79cd9",
           "plaidClientSecretDev": "d923b348398c77de63f02c226e5f88",
           "plaidClientSecretSandbox": "bde2fcf223a8e6f1340c639df05c66"

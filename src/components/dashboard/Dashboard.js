@@ -19,6 +19,7 @@ import ProfileToolTip from "./ProfileToolTip";
 import DashboardContent from "./DashboardContent";
 import { setPlaidAccessToken } from "../../features/plaid/plaidSlice";
 import { default as accountsGetResponseJson } from "../../data/accountsGetResponse.json";
+import { default as transactionSyncJson } from "../../data/transactionsGetResponse.json";
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
 // instead, on unmount it automatically destroys the Link instance
@@ -92,6 +93,8 @@ export default function Dashboard({ accessToken }) {
   //   console.dir(response);
   // }
 
+  const transactions = transactionSyncJson.added;
+
   return (
     <div>
       <div className="home-page">
@@ -99,6 +102,7 @@ export default function Dashboard({ accessToken }) {
           <DashboardContent
             addNewCardHandler={openPlaidAuthenticationPortal}
             accounts={accounts}
+            transactions={transactions}
           />
           <ProfileToolTip />
         </div>
