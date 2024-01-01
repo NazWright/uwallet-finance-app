@@ -40,8 +40,7 @@ make a file that will get the right client secret for the right env */
       statusCode: 200,
       //  Uncomment below to enable CORS requests
       headers: {
-        "Access-Control-Allow-Origin":
-          "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "*",
       },
       body: JSON.stringify({ linkToken }),
