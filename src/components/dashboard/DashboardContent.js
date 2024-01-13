@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SpendingActivity from "./SpendingActivity";
 import SendRequestMoney from "./SendRequestMoney";
 import RecentTransactionsList from "./recentTransactions/RecentTransactionsList";
@@ -13,8 +13,24 @@ export default function DashboardContent({
   transactions,
   cardHolderName,
 }) {
-  const account = accounts[0];
-  const { balances } = account;
+  const [selectedAccountId, setSelectedAccountId] = useState(
+    accounts[0]["account_id"]
+  );
+
+  let accountColor; // consistency for the card color, to my balance, spending activity, etc..
+
+  const selectedAccount = accounts.filter(
+    (account) => account["account_id"] === selectedAccountId
+  )[0];
+  const { balances } = selectedAccount;
+
+  function selectCard(event, accountId) {
+    event.preventDefault();
+    console.info("loading information for accountId: ", accountId);
+    if (accountId !== selectedAccountId) {
+      setSelectedAccountId(accountId);
+    }
+  }
 
   return (
     <>
@@ -26,13 +42,20 @@ export default function DashboardContent({
           <RecentTransactionsList expenses={transactions} incomes={[]} />
           {/* Credit card */}
           <div className="scroll-group-3">
-            <CreditCard
-              addNewCardHandler={addNewCardHandler}
-              index={3}
-              cardNumber={account.mask}
-              validThru={"** / **"}
-              cardHolderName={cardHolderName}
-            />
+            {accounts.map((account, index) => {
+              const cardIndex = index === 0 ? 3 : 2;
+              const accountId = account["account_id"];
+              return (
+                <CreditCard
+                  key={accountId}
+                  index={cardIndex}
+                  cardNumber={account.mask}
+                  validThru={"** / **"}
+                  cardHolderName={cardHolderName}
+                  onClickHandler={(event) => selectCard(event, accountId)}
+                />
+              );
+            })}
           </div>
           {/* Credit card End */}
           <MyBalance balance={balances.available + balances.current} />

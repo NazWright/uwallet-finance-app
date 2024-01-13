@@ -11,11 +11,12 @@ export default function CreditCard({
   cardNumber,
   cardHolderName,
   validThru,
-  addNewCardHandler,
+  cardColor,
+  onClickHandler,
 }) {
   return (
     <>
-      <div className={`card-${index}`}>
+      <div onClick={onClickHandler} className={`card-${index}`}>
         <div className="overlap-25">
           <div className="group-40">
             <div className="group-41">

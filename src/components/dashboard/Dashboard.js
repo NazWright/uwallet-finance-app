@@ -36,8 +36,6 @@ export default function Dashboard({ accessToken }) {
 
   const { accounts } = accountsGetResponseJson;
 
-  console.log(accounts);
-
   const config = {
     onSuccess: async (public_token, metadata) => {
       try {

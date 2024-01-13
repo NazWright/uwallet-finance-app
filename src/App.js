@@ -75,8 +75,9 @@ function App() {
         setLinkToken(response.linkToken);
       }
     }
-    fetchPlaidAccessToken();
-  }, []);
+
+    if (user.user) fetchPlaidAccessToken();
+  }, [user.user]);
 
   function renderBasedOnAuth() {
     if (user.authenticated) {
