@@ -24,13 +24,16 @@ export default function DashboardContent({
   )[0];
   const { balances } = selectedAccount;
 
-  function selectCard(event, accountId) {
-    event.preventDefault();
-    console.info("loading information for accountId: ", accountId);
-    if (accountId !== selectedAccountId) {
-      setSelectedAccountId(accountId);
-    }
-  }
+  const selectCard = React.useCallback(
+    function (event, accountId) {
+      event.preventDefault();
+      if (accountId !== selectedAccountId) {
+        console.info("loading information for accountId: ", accountId);
+        setSelectedAccountId(accountId);
+      }
+    },
+    [selectedAccountId]
+  );
 
   return (
     <>
