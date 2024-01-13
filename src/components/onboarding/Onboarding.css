@@ -1,0 +1,161 @@
+.screen-12 {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen-12 .LOG-IN-9 {
+  background-color: #ffffff;
+  height: 926px;
+  overflow: hidden;
+  position: relative;
+  width: 428px;
+}
+
+.screen-12 .overlap-74 {
+  height: 104px;
+  left: 7px;
+  position: absolute;
+  top: 608px;
+  width: 416px;
+}
+
+.screen-12 .track-all-you {
+  color: #087dea;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.screen-12 .manage-your-spending {
+  color: #087dea;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 22px;
+  font-weight: 700;
+  left: 46px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  text-align: center;
+  top: 49px;
+  white-space: nowrap;
+}
+
+.screen-12 .element-74 {
+  height: 473px;
+  left: -14px;
+  object-fit: cover;
+  position: absolute;
+  top: 123px;
+  width: 468px;
+}
+
+.screen-12 .untitled-design-39 {
+  height: 151px;
+  left: 277px;
+  object-fit: cover;
+  position: absolute;
+  top: 827px;
+  width: 151px;
+}
+
+.screen-12 .group-113 {
+  height: 11px;
+  left: 178px;
+  position: absolute;
+  top: 734px;
+  width: 73px;
+}
+
+.screen-12 .group-114 {
+  height: 11px;
+  position: relative;
+}
+
+.screen-12 .ellipse-19 {
+  border: 1px solid;
+  border-color: #707070;
+  border-radius: 5.5px;
+  height: 11px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 11px;
+}
+
+.screen-12 .ellipse-11 {
+  border: 1px solid;
+  border-color: #707070;
+  border-radius: 5.5px;
+  height: 11px;
+  position: absolute;
+  top: 0;
+  width: 11px;
+  left: 31px;
+}
+
+.ellipse-active {
+  background-color: #fdc54c;
+}
+
+.screen-12 .path-113 {
+  height: 11px;
+  left: 31px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 11px;
+}
+
+.screen-12 .ellipse-20 {
+  border: 1px solid;
+  border-color: #707070;
+  border-radius: 5.5px;
+  height: 11px;
+  left: 62px;
+  position: absolute;
+  top: 0;
+  width: 11px;
+}
+
+.screen-12 .overlap-group-33 {
+  border-radius: 23px;
+  height: 46px;
+  left: 126px;
+  position: absolute;
+  top: 774px;
+  width: 175px;
+}
+
+.screen-12 .rectangle-83 {
+  background-color: #0099ff;
+  border-radius: 23px;
+  height: 46px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 175px;
+}
+
+.screen-12 .text-wrapper-161 {
+  color: #ffffff;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  font-weight: 700;
+  left: 72px;
+  letter-spacing: 0.14px;
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  white-space: nowrap;
+}

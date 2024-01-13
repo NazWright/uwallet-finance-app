@@ -11,6 +11,7 @@ import Profile from "./components/profile/Profile";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import ForgotPasswordForm from "./components/shared/forgot-password/ForgotPasswordForm";
+import OnboardingPage from "./components/onboarding/OnboardingPage";
 
 Amplify.configure(config);
 API.configure(config);
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPasswordForm />,
+  },
+  {
+    path: "/onboarding-page",
+    element: <OnboardingPage />,
   },
 ]);
 
