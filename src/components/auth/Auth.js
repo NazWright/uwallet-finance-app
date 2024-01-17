@@ -32,7 +32,9 @@ export default function Authentication() {
                 Log In
               </div>
             </div>
-            <SignIn />
+            {logInToggled && <SignIn />}
+
+            {!logInToggled && <SignUp />}
           </div>
           <img
             className="untitled-design-46"
