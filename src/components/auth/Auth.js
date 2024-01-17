@@ -18,9 +18,19 @@ export default function Authentication() {
             {/*TODO: Work on button toggling functionality */}
             <div className={`overlap-89 ${logInToggled ? "active" : ""}`}>
               <div className={`overlap-90 ${logInToggled ? "" : "active"}`}>
-                <div className={`text-wrapper-179`}>Sign Up</div>
+                <div
+                  className={`text-wrapper-179`}
+                  onClick={(event) => setLogInToggled(false)}
+                >
+                  Sign Up
+                </div>
               </div>
-              <div className="text-wrapper-180">Log In</div>
+              <div
+                className="text-wrapper-180"
+                onClick={(event) => setLogInToggled(true)}
+              >
+                Log In
+              </div>
             </div>
             <SignIn />
           </div>

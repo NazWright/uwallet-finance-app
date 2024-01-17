@@ -108,6 +108,7 @@ export default function Dashboard({ accessToken }) {
             cardHolderName={`${user.given_name} ${user.family_name}`}
           />
           <ProfileToolTip firstName={user.given_name} />
+          <Button onClick={onSignOut}>Sign Out</Button>
         </div>
       </div>
     </div>
