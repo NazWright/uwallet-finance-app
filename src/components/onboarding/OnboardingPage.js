@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import uWalletMiniImage from "../../static/img/untitled-design-36-2.png";
 import { pages } from "../../data/onboardingPages";
 import { getContentFromPageIndex } from "../../utils/getContentFromPageIndex";
+import PageOneGraphic from "./graphics/PageOneGraphic";
+import PageThreeGraphic from "./graphics/PageThreeGraphic";
+import PageTwoGraphic from "./graphics/PageTwoGraphic";
 
 export default function OnboardingPage() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -22,11 +25,21 @@ export default function OnboardingPage() {
     // TODO: if we are at the last page, use navigate to go to new component.
   }
 
+  function getPageGraphic(pageIndex) {
+    const pageGraphics = {
+      0: <PageOneGraphic />,
+      1: <PageTwoGraphic />,
+      2: <PageThreeGraphic />,
+    };
+
+    return pageGraphics[pageIndex];
+  }
+
   return (
     <div className="screen-12">
       <div className="LOG-IN-9">
         {getContentFromPageIndex(pages, pageIndex)}
-        <img className="element-74" alt="Element" src="/img/3.png" />
+        {getPageGraphic(pageIndex)}
         <img
           className="untitled-design-39"
           alt="Untitled design"
