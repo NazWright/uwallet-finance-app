@@ -69,8 +69,9 @@ export default function SignUp() {
         infoLogFormatter("Email address has been successfully confirmed.");
         try {
           /* TODO: encrypt password bc it is being stored in redux...*/
-          Auth.signIn(email, password);
-          dispatch(setAuthenticated(true));
+          // Auth.signIn(email, password);
+          // dispatch(setAuthenticated(true));
+          window.location.pathname = "/onboarding-page";
         } catch (error) {
           errorLogFormatter(`Sign In failed... See error message: ${error}`);
           dispatch(setUser(undefined));
@@ -86,7 +87,10 @@ export default function SignUp() {
 
   const UnverifiedSignUpContent = () => {
     return (
-      <Form onSubmit={handleSubmit(signUpSubmit)}>
+      <Form
+        style={{ position: "relative", top: "30px" }}
+        onSubmit={handleSubmit(signUpSubmit)}
+      >
         {/* register your input into the hook by invoking the "register" function */}
         <Form.Group className="mb-3">
           <Form.Control
@@ -149,7 +153,6 @@ export default function SignUp() {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4"> Sign Up </h2>
       {needsVerification && (
         <h5>
           {`Please enter the verification code sent to ${formValues.email}`}
