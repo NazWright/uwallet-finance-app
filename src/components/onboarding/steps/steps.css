@@ -406,6 +406,8 @@
 
 /* choose your goals step end */
 
+/* add new card start  */
+
 .div-wrapper {
   background-color: #f7f7f7;
   display: flex;
@@ -1050,3 +1052,568 @@
   top: 20px;
   white-space: nowrap;
 }
+
+/* add new card end */
+
+/* overview */
+
+.screen-3 {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen-3 .LOG-IN-4 {
+  background-color: #f2f2f2;
+  height: 926px;
+  overflow: hidden;
+  position: relative;
+  width: 428px;
+}
+
+.screen-3 .overlap-12 {
+  height: 752px;
+  left: -46px;
+  position: absolute;
+  top: 236px;
+  width: 519px;
+}
+
+.screen-3 .path-13 {
+  height: 471px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 282px;
+  width: 519px;
+}
+
+.screen-3 .union {
+  height: 270px;
+  left: 101px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 316px;
+}
+
+.screen-3 .ellipse-2 {
+  background-color: #fdbe36;
+  border-radius: 11px/11.5px;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 23px;
+  left: 126px;
+  position: absolute;
+  top: 56px;
+  width: 22px;
+}
+
+.screen-3 .ellipse-3 {
+  background-color: #fdbe36;
+  border-radius: 11px/11.5px;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 23px;
+  left: 126px;
+  position: absolute;
+  top: 119px;
+  width: 22px;
+}
+
+.screen-3 .ellipse-4 {
+  background-color: #fdbe36;
+  border-radius: 11px/11.5px;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 23px;
+  left: 126px;
+  position: absolute;
+  top: 169px;
+  width: 22px;
+}
+
+.screen-3 .text-wrapper-27 {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 12px;
+  font-weight: 700;
+  left: 133px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  top: 22px;
+  white-space: nowrap;
+}
+
+.screen-3 .add-your-card-so-we {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 12px;
+  font-weight: 700;
+  left: 155px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  top: 59px;
+  white-space: nowrap;
+}
+
+.screen-3 .learn-through-mini {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 12px;
+  font-weight: 700;
+  left: 155px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  top: 112px;
+  white-space: nowrap;
+}
+
+.screen-3 .text-wrapper-28 {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 12px;
+  font-weight: 700;
+  left: 155px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  top: 174px;
+  white-space: nowrap;
+}
+
+.screen-3 .untitled-design-2 {
+  height: 406px;
+  left: 110px;
+  object-fit: cover;
+  position: absolute;
+  top: 195px;
+  width: 406px;
+}
+
+.screen-3 .group-16 {
+  background-color: #0099ff;
+  border-radius: 13px;
+  box-shadow: 0px 3px 6px #0014ff29;
+  height: 60px;
+  left: 92px;
+  position: absolute;
+  top: 539px;
+  width: 336px;
+}
+
+.screen-3 .text-wrapper-29 {
+  color: #ffffff;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 125px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+}
+
+.screen-3 .status-bar-4 {
+  height: 44px;
+  left: 19px;
+  position: absolute;
+  top: 0;
+  width: 390px;
+}
+
+.screen-3 .cellular-connection-3 {
+  height: 11px;
+  left: 303px;
+  object-fit: cover;
+  position: absolute;
+  top: 19px;
+  width: 17px;
+}
+
+.screen-3 .wifi-4 {
+  height: 11px;
+  left: 325px;
+  object-fit: cover;
+  position: absolute;
+  top: 19px;
+  width: 15px;
+}
+
+.screen-3 .time-4 {
+  color: #353535;
+  font-family: "SFProDisplay-Semibold", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  left: 23px;
+  letter-spacing: -0.28px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  white-space: nowrap;
+  width: 56px;
+}
+
+.screen-3 .battary-4 {
+  height: 12px;
+  left: 346px;
+  position: absolute;
+  top: 18px;
+  width: 24px;
+}
+
+.screen-3 .cap-4 {
+  height: 4px;
+  left: 23px;
+  object-fit: cover;
+  position: absolute;
+  top: 4px;
+  width: 1px;
+}
+
+.screen-3 .overlap-group-4 {
+  background-image: url(../../../static/img/rectangle-53-10.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: 3px;
+  height: 12px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 22px;
+}
+
+.screen-3 .rectangle-9 {
+  background-color: #353535;
+  border-radius: 1px;
+  height: 8px;
+  left: 2px;
+  position: relative;
+  top: 2px;
+  width: 14px;
+}
+
+.screen-3 .overlap-13 {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #bfbfbf;
+  border-radius: 14px;
+  height: 12px;
+  left: 70px;
+  position: absolute;
+  top: 78px;
+  width: 288px;
+}
+
+.screen-3 .rectangle-10 {
+  background-color: #fdb61c;
+  border: 1px solid;
+  border-color: #707070;
+  border-radius: 14px;
+  height: 12px;
+  left: -1px;
+  position: relative;
+  top: -1px;
+  width: 51px;
+}
+
+.screen-3 .text-wrapper-30 {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 10px;
+  font-weight: 700;
+  left: 162px;
+  letter-spacing: 0;
+  line-height: 10px;
+  position: absolute;
+  top: 48px;
+  white-space: nowrap;
+}
+
+.screen-3 .group-17 {
+  height: 23px;
+  left: 70px;
+  position: absolute;
+  top: 210px;
+  width: 219px;
+}
+
+.screen-3 .text-wrapper-31 {
+  color: #000000;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 9px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 9px;
+  position: absolute;
+  top: 7px;
+  white-space: nowrap;
+}
+
+.screen-3 .ellipse-5 {
+  background-color: #fdbe36;
+  border-radius: 11px/11.5px;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 23px;
+  left: 97px;
+  position: absolute;
+  top: 0;
+  width: 22px;
+}
+
+.screen-3 .text-wrapper-32 {
+  color: #000000;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 9px;
+  font-weight: 700;
+  left: 129px;
+  letter-spacing: 0;
+  line-height: 9px;
+  position: absolute;
+  top: 7px;
+  white-space: nowrap;
+}
+
+/* overview end */
+
+/* welcome step - final step  */
+
+.LOG-IN {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.LOG-IN .div {
+  background-color: #f2f2f2;
+  height: 926px;
+  position: relative;
+  width: 428px;
+}
+
+.LOG-IN .status-bar {
+  height: 44px;
+  left: 19px;
+  position: absolute;
+  top: 0;
+  width: 390px;
+}
+
+.LOG-IN .cellular-connection {
+  height: 11px;
+  left: 303px;
+  object-fit: cover;
+  position: absolute;
+  top: 19px;
+  width: 17px;
+}
+
+.LOG-IN .wifi {
+  height: 11px;
+  left: 325px;
+  object-fit: cover;
+  position: absolute;
+  top: 19px;
+  width: 15px;
+}
+
+.LOG-IN .time {
+  color: #353535;
+  font-family: "SFProDisplay-Semibold", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  left: 23px;
+  letter-spacing: -0.28px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  white-space: nowrap;
+  width: 56px;
+}
+
+.LOG-IN .battary {
+  height: 12px;
+  left: 346px;
+  position: absolute;
+  top: 18px;
+  width: 24px;
+}
+
+.LOG-IN .cap {
+  height: 4px;
+  left: 23px;
+  object-fit: cover;
+  position: absolute;
+  top: 4px;
+  width: 1px;
+}
+
+.LOG-IN .overlap-group {
+  background-image: url(../../../static/img/rectangle-53-10.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: 3px;
+  height: 12px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 22px;
+}
+
+.LOG-IN .rectangle {
+  background-color: #353535;
+  border-radius: 1px;
+  height: 8px;
+  left: 2px;
+  position: relative;
+  top: 2px;
+  width: 14px;
+}
+
+.LOG-IN .overlap {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #bfbfbf;
+  border-radius: 14px;
+  height: 12px;
+  left: 70px;
+  position: absolute;
+  top: 78px;
+  width: 288px;
+}
+
+.LOG-IN .rectangle-2 {
+  background-color: #fdb61c;
+  border-radius: 14px;
+  height: 12px;
+  left: -1px;
+  position: relative;
+  top: -1px;
+}
+
+.LOG-IN .text-wrapper {
+  color: #3180f0;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 10px;
+  font-weight: 700;
+  left: 162px;
+  letter-spacing: 0;
+  line-height: 10px;
+  position: absolute;
+  top: 48px;
+  white-space: nowrap;
+}
+
+.LOG-IN .overlap-2 {
+  height: 466px;
+  left: 30px;
+  position: absolute;
+  top: 189px;
+  width: 383px;
+}
+
+.LOG-IN .hi-welcome-to {
+  color: #979798;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 17px;
+  font-weight: 700;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: 17px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.LOG-IN .group {
+  height: 383px;
+  left: 0;
+  position: absolute;
+  top: 83px;
+  width: 383px;
+}
+
+.LOG-IN .overlap-3 {
+  border-radius: 15px;
+  height: 383px;
+  position: relative;
+}
+
+.LOG-IN .ellipse {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #707070;
+  border-radius: 121px/114.5px;
+  height: 229px;
+  left: 60px;
+  position: absolute;
+  top: 113px;
+  width: 242px;
+}
+
+.LOG-IN .untitled-design {
+  border-radius: 15px;
+  height: 383px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 383px;
+}
+
+.LOG-IN .rectangle-3 {
+  background-color: #fdb61c;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 29px;
+  left: 92px;
+  position: absolute;
+  top: 314px;
+  width: 183px;
+}
+
+.LOG-IN .text-wrapper-2 {
+  color: #ffffff;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 177px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 400px;
+  white-space: nowrap;
+}
+
+.LOG-IN .group-2 {
+  background-color: #0099ff;
+  border-radius: 13px;
+  box-shadow: 0px 3px 6px #0014ff29;
+  height: 60px;
+  left: 46px;
+  position: absolute;
+  top: 775px;
+  width: 336px;
+}
+
+.LOG-IN .text-wrapper-3 {
+  color: #ffffff;
+  font-family: "HelveticaNeue-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 140px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+}
+/* welcome step end */
