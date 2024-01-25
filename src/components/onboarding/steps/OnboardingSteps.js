@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function OnboardingSteps() {
   const userActionPages = useSelector((state) => state.userAction.pages);
+  const isUserAuthenticated = useSelector((state) => state.auth.authenticated);
   const dispatch = useDispatch();
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
@@ -30,7 +31,11 @@ export default function OnboardingSteps() {
     dispatch(setPageState(newPageState));
 
     if (isAllOnboardingStepsComplete(newPageState)) {
-      naviagte("/dashboard");
+      if (isUserAuthenticated) {
+        navigate("/dashboard");
+      } else {
+        navigate("/");
+      }
     }
   }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./steps.css";
 
-export default function OnboardingTasksOverview() {
+export default function OnboardingTasksOverview({ handleCompletedStep }) {
   return (
     <div className="screen-3">
       <div className="LOG-IN-4">
@@ -31,8 +31,10 @@ export default function OnboardingTasksOverview() {
             alt="Untitled design"
             src="/img/untitled-design-32.png"
           />
-          <Link className="group-16" to="/log-in-87">
-            <div className="text-wrapper-29">Continue</div>
+          <Link className="group-16">
+            <div className="text-wrapper-29" onClick={handleCompletedStep}>
+              Continue
+            </div>
           </Link>
         </div>
         <div className="status-bar-4">

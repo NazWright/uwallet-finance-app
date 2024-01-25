@@ -8,7 +8,13 @@ const initialState = {
   pages: [
     {
       id: 0,
-      element: <OnboardingTasksOverview />,
+      element: (
+        <OnboardingTasksOverview
+          handleCompletedStep={console.info(
+            "Initializing overview step page..."
+          )}
+        />
+      ),
       complete: false,
     },
     {

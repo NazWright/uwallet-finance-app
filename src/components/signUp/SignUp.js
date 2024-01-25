@@ -70,7 +70,7 @@ export default function SignUp() {
         try {
           /* TODO: encrypt password bc it is being stored in redux...*/
           // Auth.signIn(email, password);
-          // dispatch(setAuthenticated(true));
+          dispatch(setAuthenticated(true));
           window.location.pathname = "/onboarding-page";
         } catch (error) {
           errorLogFormatter(`Sign In failed... See error message: ${error}`);

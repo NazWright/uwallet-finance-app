@@ -157,8 +157,10 @@ export default function AddNewCardStep({ handleCompletedStep }) {
               </div>
             </div>
           </div>
-          <Link className="group-15" to="/log-in-91">
-            <div className="text-wrapper-26">Continue</div>
+          <Link className="group-15">
+            <div className="text-wrapper-26" onClick={handleCompletedStep}>
+              Continue
+            </div>
           </Link>
         </div>
       </div>
