@@ -9,4 +9,5 @@ export const store = configureStore({
     plaidAuth: plaidAuthSlice,
     userAction: userActionPagesSlice,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

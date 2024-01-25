@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./steps.css";
+import capImage from "../../../static/img/cap-10.png";
+import wifiImage from "../../../static/img/wifi-3.png";
+import cellularConnection from "../../../static/img/cellular-connection-10.png";
 
 export default function OnboardingTasksOverview({ handleCompletedStep }) {
   return (
@@ -41,12 +44,12 @@ export default function OnboardingTasksOverview({ handleCompletedStep }) {
           <img
             className="cellular-connection-3"
             alt="Cellular connection"
-            src="/img/cellular-connection-10.png"
+            src={cellularConnection}
           />
-          <img className="wifi-4" alt="Wifi" src="/img/wifi-3.png" />
+          <img className="wifi-4" alt="Wifi" src={wifiImage} />
           <div className="time-4">9:30</div>
           <div className="battary-4">
-            <img className="cap-4" alt="Cap" src="/img/cap-10.png" />
+            <img className="cap-4" alt="Cap" src={capImage} />
             <div className="overlap-group-4">
               <div className="rectangle-9" />
             </div>

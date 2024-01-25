@@ -58,7 +58,7 @@ export const userActionPageSlice = createSlice({
   initialState,
   reducers: {
     setPageState: (state, action) => {
-      state.pages = action.payload;
+      return action.payload;
     },
   },
 });

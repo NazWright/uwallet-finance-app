@@ -52,7 +52,7 @@ function App() {
       } catch (error) {
         errorLogFormatter(error);
         dispatch(setAuthenticated(false));
-        dispatch(setUser(undefined));
+        dispatch(setUser({}));
       }
     }
 

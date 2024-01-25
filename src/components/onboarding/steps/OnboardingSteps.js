@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function OnboardingSteps() {
   const userActionPages = useSelector((state) => state.userAction.pages);
-  const isUserAuthenticated = useSelector((state) => state.auth.authenticated);
+  const userIsAuthenticated = useSelector((state) => state.auth.authenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [pageIndex, setPageIndex] = useState(0);
@@ -19,6 +19,7 @@ export default function OnboardingSteps() {
 
   function markPageStatusAsComplete(pages, currentPageIndex) {
     const newPageState = pages.map((page) => {
+      /* TODO: it would be imperative to check if the previous page is complete here as well. */
       if (page.id === currentPageIndex) {
         return {
           id: page.id,
@@ -28,10 +29,14 @@ export default function OnboardingSteps() {
       }
       return page;
     });
-    dispatch(setPageState(newPageState));
+    dispatch(setPageState({ pages: newPageState }));
 
-    if (isAllOnboardingStepsComplete(newPageState)) {
-      if (isUserAuthenticated) {
+    redirectIfOnboardingIsComplete(newPageState);
+  }
+
+  function redirectIfOnboardingIsComplete(pageState) {
+    if (allOnboardingStepsAreComplete(pageState)) {
+      if (userIsAuthenticated) {
         navigate("/dashboard");
       } else {
         navigate("/");
@@ -39,7 +44,7 @@ export default function OnboardingSteps() {
     }
   }
 
-  function isAllOnboardingStepsComplete(pages) {
+  function allOnboardingStepsAreComplete(pages) {
     return pages[pages.length - 1].complete;
   }
 
