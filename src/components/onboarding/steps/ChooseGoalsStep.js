@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./steps.css";
 
-export default function ChooseGoalsStep() {
+export default function ChooseGoalsStep({ handleCompletedStep }) {
   return (
     <div className="LOG-IN-screen">
       <div className="LOG-IN-2">

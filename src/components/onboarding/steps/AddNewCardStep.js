@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./steps.css";
 
-export default function AddNewCardStep() {
+export default function AddNewCardStep({ handleCompletedStep }) {
   return (
     <div className="div-wrapper">
       <div className="LOG-IN-3">

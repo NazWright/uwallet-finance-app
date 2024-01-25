@@ -19,7 +19,7 @@ export default function OnboardingPage() {
   function nextPage() {
     if (pageIndex > 2) return;
 
-    if (pageIndex === 2) navigate("/dashboard");
+    if (pageIndex === 2) navigate("/user/onboarding");
 
     setPageIndex(pageIndex + 1);
     // TODO: if we are at the last page, use navigate to go to new component.

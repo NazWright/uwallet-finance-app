@@ -13,17 +13,35 @@ const initialState = {
     },
     {
       id: 1,
-      element: <AddNewCardStep />,
+      element: (
+        <AddNewCardStep
+          handleCompletedStep={() =>
+            console.info("Initializing add new card step page...")
+          }
+        />
+      ),
       complete: false,
     },
     {
       id: 2,
-      element: <ChooseGoalsStep />,
+      element: (
+        <ChooseGoalsStep
+          handleCompletedStep={() =>
+            console.info("Initializing choose goals step page...")
+          }
+        />
+      ),
       complete: false,
     },
     {
       id: 3,
-      element: <WelcomeStep />,
+      element: (
+        <WelcomeStep
+          handleCompletedStep={() =>
+            console.info("Initializing welcome step page...")
+          }
+        />
+      ),
       complete: false,
     },
   ],
