@@ -10,6 +10,7 @@ import shape43 from "../../../static/img/shape-43.png";
 import shape44 from "../../../static/img/shape-44.png";
 import path128 from "../../../static/img/path-128.png";
 import cellularConnection from "../../../static/img/cellular-connection-10.png";
+import AddNewCardStepForm from "./AddNewCardStepForm";
 
 export default function AddNewCardStep({ handleCompletedStep }) {
   return (
@@ -77,28 +78,9 @@ export default function AddNewCardStep({ handleCompletedStep }) {
                 </div>
               </div>
               <div className="text-wrapper-19">Add New Card</div>
-              {/* card number field */}
-              <input className="element-wrapper" />
-              {/* Card number field */}
-              <div className="text-wrapper-20">Card Number</div>
-
-              <div className="group-13">
-                <input className="overlap-9" />
-                <input className="overlap-10" />
-                <div className="text-wrapper-23">CVV</div>
-                <div className="text-wrapper-24">EXP</div>
-              </div>
-              <div className="overlap-11">
-                <div className="group-14">
-                  <input className="rectangle-8" />
-                  <div className="text-wrapper-24">Name on Card </div>
-                </div>
-              </div>
             </div>
           </div>
-          <Link className="group-15 onboarding" onClick={handleCompletedStep}>
-            <div className="text-wrapper-26">Continue</div>
-          </Link>
+          <AddNewCardStepForm handleCompletedStep={handleCompletedStep} />
         </div>
       </div>
     </div>

@@ -963,6 +963,10 @@
   white-space: nowrap;
 }
 
+.div-wrapper button {
+  border: none;
+}
+
 .div-wrapper .text-wrapper-22 {
   color: #707071;
   font-family: "HelveticaNeue-Bold", Helvetica;
