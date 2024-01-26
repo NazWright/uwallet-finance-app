@@ -54,8 +54,10 @@ export default function OnboardingPage() {
         </div>
         <div className="overlap-group-33">
           <div onClick={() => nextPage()}>
-            <Link className="rectangle-83" />
-            <div className="text-wrapper-161">Next</div>
+            <div className="onboarding">
+              <Link className="rectangle-83" />
+              <div className="text-wrapper-161">Next</div>
+            </div>
           </div>
         </div>
       </div>

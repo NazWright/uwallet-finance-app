@@ -62,10 +62,8 @@ export default function ChooseGoalsStep({ handleCompletedStep }) {
         <div className="group-10">
           <div className="text-wrapper-12">JOBS</div>
         </div>
-        <Link className="group-11">
-          <div className="text-wrapper-13" onClick={handleCompletedStep}>
-            Continue
-          </div>
+        <Link className="group-11" onClick={handleCompletedStep}>
+          <div className="text-wrapper-13">Continue</div>
         </Link>
       </div>
     </div>

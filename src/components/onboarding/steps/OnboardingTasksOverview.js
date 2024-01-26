@@ -4,14 +4,17 @@ import "./steps.css";
 import capImage from "../../../static/img/cap-10.png";
 import wifiImage from "../../../static/img/wifi-3.png";
 import cellularConnection from "../../../static/img/cellular-connection-10.png";
+import union1 from "../../../static/img/union-1.png";
+import path13 from "../../../static/img/path-13-1.png";
+import ut32 from "../../../static/img/untitled-design-32.png";
 
 export default function OnboardingTasksOverview({ handleCompletedStep }) {
   return (
     <div className="screen-3">
       <div className="LOG-IN-4">
         <div className="overlap-12">
-          <img className="path-13" alt="Path" src="/img/path-13-1.png" />
-          <img className="union" alt="Union" src="/img/union-1.png" />
+          <img className="path-13" alt="Path" src={union1} />
+          <img className="union" alt="Union" src={path13} />
           <div className="ellipse-2" />
           <div className="ellipse-3" />
           <div className="ellipse-4" />
@@ -29,15 +32,9 @@ export default function OnboardingTasksOverview({ handleCompletedStep }) {
             For rewards
           </p>
           <div className="text-wrapper-28">Meet your personal advisor</div>
-          <img
-            className="untitled-design-2"
-            alt="Untitled design"
-            src="/img/untitled-design-32.png"
-          />
-          <Link className="group-16">
-            <div className="text-wrapper-29" onClick={handleCompletedStep}>
-              Continue
-            </div>
+          <img className="untitled-design-2" alt="Untitled design" src={ut32} />
+          <Link className="group-16 onboarding" onClick={handleCompletedStep}>
+            <div className="text-wrapper-29">Continue</div>
           </Link>
         </div>
         <div className="status-bar-4">

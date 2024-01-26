@@ -4,6 +4,7 @@ import "./steps.css";
 import capImage from "../../../static/img/cap-10.png";
 import wifiImage from "../../../static/img/wifi-3.png";
 import cellularConnection from "../../../static/img/cellular-connection-10.png";
+import ut33 from "../../../static/img/untitled-design-33.png";
 
 export default function WelcomeStep({ handleCompletedStep }) {
   return (
@@ -45,14 +46,14 @@ export default function WelcomeStep({ handleCompletedStep }) {
               <img
                 className="untitled-design"
                 alt="Untitled design"
-                src="/img/untitled-design-33.png"
+                src={ut33}
               />
               <div className="rectangle-3" />
             </div>
           </div>
           <div className="text-wrapper-2">P.A</div>
         </div>
-        <Link className="group-2">
+        <Link className="group-2 onboarding">
           <div className="text-wrapper-3" onClick={handleCompletedStep}>
             Home
           </div>

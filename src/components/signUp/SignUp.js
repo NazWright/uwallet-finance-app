@@ -142,7 +142,7 @@ export default function SignUp() {
           {/* errors will return when field validation fails  */}
           {errors.password && <span>This field is required</span>}
         </Form.Group>
-        <Button type="submit" className="float-end">
+        <Button type="submit" className="float-end onboarding">
           Sign Up
         </Button>
       </Form>

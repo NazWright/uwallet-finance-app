@@ -66,7 +66,7 @@ export default function SignInFormContent({ forgotPasswordTrigger }) {
         </div>
 
         {/* Button to login*/}
-        <button className="group-141" to="/log-in-4">
+        <button className="group-141 onboarding">
           <div className="text-wrapper-183">Log In</div>
         </button>
       </form>
