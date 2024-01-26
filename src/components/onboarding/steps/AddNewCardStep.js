@@ -77,28 +77,22 @@ export default function AddNewCardStep({ handleCompletedStep }) {
                 </div>
               </div>
               <div className="text-wrapper-19">Add New Card</div>
-              <div className="element-wrapper">
-                <div className="element">
-                  4171&nbsp;&nbsp;1911&nbsp;&nbsp;2674&nbsp;&nbsp;4765
-                </div>
-              </div>
+              {/* card number field */}
+              <input className="element-wrapper" />
+              {/* Card number field */}
               <div className="text-wrapper-20">Card Number</div>
+
               <div className="group-13">
-                <div className="overlap-9">
-                  <div className="text-wrapper-21">02/25</div>
-                </div>
-                <div className="overlap-10">
-                  <div className="text-wrapper-22">808</div>
-                </div>
+                <input className="overlap-9" />
+                <input className="overlap-10" />
                 <div className="text-wrapper-23">CVV</div>
                 <div className="text-wrapper-24">EXP</div>
               </div>
               <div className="overlap-11">
                 <div className="group-14">
-                  <div className="rectangle-8" />
+                  <input className="rectangle-8" />
                   <div className="text-wrapper-24">Name on Card </div>
                 </div>
-                <div className="text-wrapper-25">Jamie Johnson</div>
               </div>
             </div>
           </div>
