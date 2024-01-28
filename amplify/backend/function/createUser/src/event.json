@@ -1,0 +1,11 @@
+{
+  "httpMethod": "POST",
+  "path": "/users",
+  "queryStringParameters": {
+    "limit": "10"
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"userId\":\"kmsfbgabgjggrjbhjkehh\",\"email\":\"nazerewright@nazerewright.com\", \"given_name\":\"Nazere\", \"family_name\":\"Wright\", \"phone_number\":\"3364567887\" }"
+}

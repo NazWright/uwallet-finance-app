@@ -5,15 +5,17 @@ import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Verification from "../shared/verification/Verification";
 import {
   errorLogFormatter,
   infoLogFormatter,
 } from "../../utils/infoLogFormatter";
 
-export default function SignUp() {
+export default function SignUp({ verificationHandler }) {
   const [needsVerification, setNeedsVerification] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.auth);
 
   console.dir(currentUser);
@@ -45,6 +47,7 @@ export default function SignUp() {
       infoLogFormatter("Successfully authenticated new user.");
       infoLogFormatter("Starting verification process...");
       dispatch(setUser({ ...signUpAttributes, password: data.password }));
+      verificationHandler();
       setNeedsVerification(true);
     } catch (error) {
       errorLogFormatter(error);
@@ -60,8 +63,8 @@ export default function SignUp() {
       return;
     }
 
-    const email = currentUser.user.email;
-    const password = currentUser.user.password;
+    const email = currentUser.email;
+    const password = currentUser.password;
 
     try {
       const status = await Auth.confirmSignUp(email, data.verificationCode);
@@ -71,7 +74,7 @@ export default function SignUp() {
           /* TODO: encrypt password bc it is being stored in redux...*/
           // Auth.signIn(email, password);
           dispatch(setAuthenticated(true));
-          window.location.pathname = "/onboarding-page";
+          navigate("/onboarding-page");
         } catch (error) {
           errorLogFormatter(`Sign In failed... See error message: ${error}`);
           dispatch(setUser(undefined));
@@ -85,81 +88,121 @@ export default function SignUp() {
     }
   };
 
+  const inputMarginBottomClassName = "mb-4";
+
+  const requiredErrorMessage = "This field is required.";
+
+  const info = {
+    fname: "Naz",
+    lname: "Wright",
+    email: "nazwrightthedeveloper@gmail.com",
+    phoneNum: "3362072779",
+    password: "@Linux2019ns",
+  };
+
+  const signUpFormFieldsMeta = [
+    {
+      id: 0,
+      name: "firstName",
+      placeholder: "First Name",
+      type: "text",
+      required: true,
+      value: info.fname,
+    },
+    {
+      id: 1,
+      name: "lastName",
+      placeholder: "Last Name",
+      type: "text",
+      value: info.lname,
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      placeholder: "Email Address",
+      value: info.email,
+      type: "email",
+      required: true,
+    },
+    {
+      id: 3,
+      name: "phone",
+      placeholder: "Phone Number",
+      value: info.phoneNum,
+      type: "phone",
+      required: true,
+    },
+    {
+      id: 4,
+      name: "password",
+      placeholder: "Password",
+      value: info.password,
+      type: "password",
+      required: true,
+    },
+  ];
+
+  const SignUpInput = ({ type, name, required, placeholder, value }) => {
+    return (
+      <Form.Group className={inputMarginBottomClassName}>
+        <div className="form-control uwallet-input-group">
+          <input
+            className="uwallet-input"
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            {...register(name, { required: true })}
+          />
+          {errors[name] && required && <span className="error-icon">x</span>}
+        </div>
+      </Form.Group>
+    );
+  };
+
   const UnverifiedSignUpContent = () => {
     return (
       <Form
         style={{ position: "relative", top: "30px" }}
         onSubmit={handleSubmit(signUpSubmit)}
+        className={`mt-4 p-2 ${formHasErrors ? "error" : ""}`}
       >
-        {/* register your input into the hook by invoking the "register" function */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            placeholder="First Name"
-            {...register("firstName", { required: true })}
-          />
-        </Form.Group>
-
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            placeholder="Last Name"
-            type="text"
-            {...register("lastName", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.lastName && <span>This field is required</span>}
-        </Form.Group>
-
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            placeholder="Email Address"
-            type="email"
-            {...register("email", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.email && <span>This field is required</span>}
-        </Form.Group>
-
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="phone"
-            placeholder="Phone"
-            {...register("phone", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.phone && <span>This field is required</span>}
-        </Form.Group>
-
-        {/* include validation with required or other standard HTML validation rules */}
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            {...register("password", { required: true })}
-          />
-          {/* errors will return when field validation fails  */}
-          {errors.password && <span>This field is required</span>}
-        </Form.Group>
-        <Button type="submit" className="float-end onboarding">
-          Sign Up
-        </Button>
+        {signUpFormFieldsMeta.map((field) => {
+          return (
+            <SignUpInput
+              type={field.type}
+              placeholder={field.placeholder}
+              key={field.id}
+              name={field.name}
+              required={field.required}
+              value={field.value}
+            />
+          );
+        })}
+        <div className="w-100 d-flex justify-content-center">
+          <button
+            type="submit"
+            className="authentication-button sign-up onboarding"
+          >
+            <div className="text-white">Sign Up</div>
+          </button>
+        </div>
       </Form>
     );
   };
 
   const formValues = watch();
 
+  const formHasErrors = Object.keys(errors).length > 0;
+
   return (
-    <div className="container mt-5">
-      {needsVerification && (
-        <h5>
-          {`Please enter the verification code sent to ${formValues.email}`}
-        </h5>
-      )}
+    <div className={`container mt-5`}>
       {needsVerification ? (
-        <Verification submitVerificationCodeHandler={submitVerificationCode} />
+        <Verification
+          email={currentUser.email}
+          submitVerificationCodeHandler={submitVerificationCode}
+        />
       ) : (
         <UnverifiedSignUpContent />
       )}

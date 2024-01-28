@@ -139,7 +139,46 @@
   outline: none;
 }
 
-.screen-14 .group-141 {
+.authentication-form.sign-up {
+  height: 50%;
+}
+
+.authentication-form.sign-up.error {
+  height: 60%;
+}
+
+.authentication-form.sign-up.verification {
+  height: 33%;
+}
+
+.error-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: red;
+}
+
+.verification-email {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.error-icon {
+  color: red;
+  font-weight: bold;
+}
+
+.uwallet-input {
+  border: none;
+  outline: none;
+  flex: 2;
+}
+
+.uwallet-input-group {
+  display: flex;
+}
+
+.screen-14 .authentication-button {
   background-image: url(../../static/img/path-17-1.png);
   background-position: 50% 50%;
   background-color: transparent;
@@ -150,6 +189,10 @@
   top: 275px;
   width: 175px;
   border: none;
+}
+
+.screen-14 .authentication-button.sign-up {
+  position: unset;
 }
 
 .screen-14 .text-wrapper-183 {

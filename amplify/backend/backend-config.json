@@ -25,6 +25,14 @@
           ],
           "category": "function",
           "resourceName": "fetchPlaidAccountInformation"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "createUser"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -65,6 +73,25 @@
   "function": {
     "createPlaidAuthToken": {
       "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "createUser": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "dynamoDBUWallet"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -117,6 +144,38 @@
         {
           "category": "function",
           "resourceName": "createPlaidAuthToken"
+        }
+      ]
+    },
+    "AMPLIFY_function_createUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_createUser_env": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_createUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_createUser_tableRegion": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createUser"
         }
       ]
     },
@@ -201,5 +260,10 @@
       ]
     }
   },
-  "storage": {}
+  "storage": {
+    "dynamoDBUWallet": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
 }

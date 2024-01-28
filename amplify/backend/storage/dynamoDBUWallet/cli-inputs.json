@@ -1,0 +1,25 @@
+{
+  "resourceName": "dynamoDBUWallet",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "email",
+      "partitionKey": {
+        "fieldName": "email",
+        "fieldType": "string"
+      }
+    },
+    {
+      "name": "phone_number",
+      "partitionKey": {
+        "fieldName": "phone_number",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

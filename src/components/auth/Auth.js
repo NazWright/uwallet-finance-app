@@ -9,12 +9,17 @@ import { useState } from "react";
 
 export default function Authentication() {
   const [logInToggled, setLogInToggled] = useState(true);
+  const [isVerification, setIsVerification] = useState(false);
 
   return (
     <div className="login">
       <div className="screen-14">
         <div className="LOG-IN-10">
-          <div className="authentication-form">
+          <div
+            className={`authentication-form ${
+              logInToggled ? "sign-in" : "sign-up"
+            } ${isVerification ? "verification" : ""}`}
+          >
             {/*TODO: Work on button toggling functionality */}
             <div className={`overlap-89 ${logInToggled ? "active" : ""}`}>
               <div className={`overlap-90 ${logInToggled ? "" : "active"}`}>
@@ -34,7 +39,9 @@ export default function Authentication() {
             </div>
             {logInToggled && <SignIn />}
 
-            {!logInToggled && <SignUp />}
+            {!logInToggled && (
+              <SignUp verificationHandler={() => setIsVerification(true)} />
+            )}
           </div>
           <img
             className="untitled-design-46"

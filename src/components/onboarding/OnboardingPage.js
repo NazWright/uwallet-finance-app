@@ -27,7 +27,7 @@ export default function OnboardingPage() {
 
   function getPageGraphic(pageIndex) {
     const pageGraphics = {
-      0: <PageOneGraphic />,
+      0: <PageOneGraphic width="30rem" height="30rem" />,
       1: <PageTwoGraphic />,
       2: <PageThreeGraphic />,
     };
@@ -36,30 +36,29 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="screen-12">
-      <div className="LOG-IN-9">
+    <div className="onboarding-graphic-one">
+      <div className="content-section d-flex w-100 align-items-center flex-column p-5">
         {getContentFromPageIndex(pages, pageIndex)}
-        {getPageGraphic(pageIndex)}
-        <img
-          className="untitled-design-39"
-          alt="Untitled design"
-          src={uWalletMiniImage}
-        />
-        <div className="group-113">
+        <div className="justify-content-center w-100 d-flex">
+          {getPageGraphic(pageIndex)}
+        </div>
+        <div className="elipsis-group">
           <div className="group-114">
             <div className={`ellipse-19 ${hasActiveEllipseClassName(0)}`} />
             <div className={`ellipse-11 ${hasActiveEllipseClassName(1)}`} />
             <div className={`ellipse-20 ${hasActiveEllipseClassName(2)}`} />
           </div>
         </div>
-        <div className="overlap-group-33">
-          <div onClick={() => nextPage()}>
-            <div className="onboarding">
-              <Link className="rectangle-83" />
-              <div className="text-wrapper-161">Next</div>
-            </div>
+        <div className="next-button">
+          <div className="rectangle-83 mt-3" onClick={() => nextPage()}>
+            <div className="text-wrapper-161">Next</div>
           </div>
         </div>
+        <img
+          className="mini-uwallet-logo"
+          alt="Untitled design"
+          src={uWalletMiniImage}
+        />
       </div>
     </div>
   );

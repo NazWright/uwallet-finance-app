@@ -34,6 +34,12 @@
           "plaidClientId": "65932bc3312862001cd79cd9",
           "plaidClientSecretDev": "d923b348398c77de63f02c226e5f88",
           "plaidClientSecretSandbox": "bde2fcf223a8e6f1340c639df05c66"
+        },
+        "createUser": {
+          "tableRegion": "us-east-1",
+          "env": "main",
+          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+          "s3Key": "amplify-builds/createUser-6271774d6d6e70336e73-build.zip"
         }
       },
       "api": {
@@ -41,6 +47,9 @@
       },
       "auth": {
         "financialappe284dc6a": {}
+      },
+      "storage": {
+        "dynamoDBUWallet": {}
       }
     }
   }

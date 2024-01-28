@@ -20,19 +20,19 @@ import DashboardContent from "./DashboardContent";
 import { setPlaidAccessToken } from "../../features/plaid/plaidSlice";
 import { default as accountsGetResponseJson } from "../../data/accountsGetResponse.json";
 import { default as transactionSyncJson } from "../../data/transactionsGetResponse.json";
+import { useNavigate } from "react-router-dom";
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
 // instead, on unmount it automatically destroys the Link instance
 
 export default function Dashboard({ accessToken }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const plaidAccessToken = useSelector(
     (state) => state.plaidAuth.plaidAccessToken
   );
 
-  const userMeta = useSelector((state) => state.auth);
-
-  const { user } = userMeta;
+  const user = useSelector((state) => state.auth);
 
   const { accounts } = accountsGetResponseJson;
 
@@ -76,6 +76,7 @@ export default function Dashboard({ accessToken }) {
       await Auth.signOut();
       dispatch(setAuthenticated(false));
       dispatch(setUser(undefined));
+      navigate("/");
       infoLogFormatter(
         "User has been successfully signed out. Redirecting to sign in..."
       );
@@ -83,6 +84,7 @@ export default function Dashboard({ accessToken }) {
       errorLogFormatter(error);
       dispatch(setAuthenticated(false));
       dispatch(setUser(undefined));
+      navigate("/");
     }
   }
 
