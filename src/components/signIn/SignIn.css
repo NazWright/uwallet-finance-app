@@ -166,12 +166,16 @@
 .error-icon {
   color: red;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .uwallet-input {
   border: none;
   outline: none;
   flex: 2;
+  background: transparent;
 }
 
 .uwallet-input-group {

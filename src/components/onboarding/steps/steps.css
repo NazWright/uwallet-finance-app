@@ -888,6 +888,7 @@
   position: absolute;
   top: 304px;
   width: 336px;
+  display: flex;
 }
 
 .div-wrapper .element {
