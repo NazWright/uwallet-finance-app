@@ -1,0 +1,18 @@
+{
+  "resourceName": "dynamo69cb9cf6",
+  "tableName": "user_cards",
+  "partitionKey": {
+    "fieldName": "user_cards_id",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "userId",
+      "partitionKey": {
+        "fieldName": "user_id",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

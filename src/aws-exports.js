@@ -41,6 +41,10 @@ const awsmobile = {
         {
             "tableName": "users-main",
             "region": "us-east-1"
+        },
+        {
+            "tableName": "user_cards-main",
+            "region": "us-east-1"
         }
     ]
 };

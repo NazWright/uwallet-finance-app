@@ -28,6 +28,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/user-cards": {
+      "name": "/user-cards",
+      "lambdaFunction": "storeUserCardInformation",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

@@ -40,6 +40,12 @@
           "env": "main",
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
           "s3Key": "amplify-builds/createUser-6271774d6d6e70336e73-build.zip"
+        },
+        "storeUserCardInformation": {
+          "tableRegion": "us-east-1",
+          "env": "main",
+          "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
+          "s3Key": "amplify-builds/storeUserCardInformation-32694a6164303572724d-build.zip"
         }
       },
       "api": {
@@ -49,7 +55,8 @@
         "financialappe284dc6a": {}
       },
       "storage": {
-        "dynamoDBUWallet": {}
+        "dynamoDBUWallet": {},
+        "dynamo69cb9cf6": {}
       }
     }
   }
