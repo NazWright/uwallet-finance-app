@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 import { constants } from "../../../constants/applicationConstants";
 import { useSelector } from "react-redux";
@@ -19,10 +18,9 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
   console.log(currentUser);
 
   async function submitNewCardInformation(data) {
-    console.log(data);
     console.info("Making request to backend to store user card information");
-
     try {
+      /* TODO: Right now, a malicious user could enter in the same card information more than once. We should not allow the same card number to be entered into the database. */
       const request = {
         user_id: currentUser.username || "unauthenticated",
         user_cards_id: uuidv4(),
@@ -45,10 +43,6 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
     } catch (error) {
       console.error(error);
     } // store info in redux on every change
-  }
-
-  function onInputChange(event) {
-    // call redux to set the card information
   }
 
   return (
