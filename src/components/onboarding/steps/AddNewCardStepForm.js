@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { API } from "aws-amplify";
 import { constants } from "../../../constants/applicationConstants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { setUserCards } from "../../../features/onboarding/userOnboardingInformationSlice";
 
 export default function AddNewCardStepForm({ handleCompletedStep }) {
   const [last4ofCardNumber, setLast4ofCardNumber] = useState("****");
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth);
+  const currentCards = useSelector(
+    (state) => state.userOnboardingInfo.userCards
+  );
   const {
     register,
     handleSubmit,
@@ -16,6 +21,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
   } = useForm();
 
   console.log(currentUser);
+  console.log(currentCards);
 
   async function submitNewCardInformation(data) {
     console.info("Making request to backend to store user card information");
@@ -35,10 +41,13 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
         body: request,
       });
       // store card information in redux.
+      dispatch(setUserCards([request]));
       console.info(
         "Successfull API call to /user-cards to store user information."
       );
-
+      console.info(
+        "Add new card step complete, redirecting to choose your goals..."
+      );
       handleCompletedStep();
     } catch (error) {
       console.error(error);

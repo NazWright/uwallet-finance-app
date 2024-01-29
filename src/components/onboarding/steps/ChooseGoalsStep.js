@@ -4,9 +4,12 @@ import "./steps.css";
 import capImage from "../../../static/img/cap-10.png";
 import wifiImage from "../../../static/img/wifi-3.png";
 import cellularConnection from "../../../static/img/cellular-connection-10.png";
+import { useDispatch } from "react-redux";
+import { setUserGoals } from "../../../features/onboarding/userOnboardingInformationSlice";
 
 export default function ChooseGoalsStep({ handleCompletedStep }) {
   const [selectedGoals, setSelectedGoals] = useState([]);
+  const dispatch = useDispatch();
 
   function selectOrRemoveGoal(event, goal) {
     if (selectedGoals.includes(goal)) {
@@ -27,8 +30,12 @@ export default function ChooseGoalsStep({ handleCompletedStep }) {
       alert("Please select three goals.");
       return;
     }
-
+    console.info("Storing user goals into redux store...");
     // TODO: store user goal data to database here
+    dispatch(setUserGoals(selectedGoals));
+    console.info(
+      "Successfully stored user goals, redirecting to welcome step..."
+    );
 
     handleCompletedStep();
   }
