@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { API } from "aws-amplify";
 import { constants } from "../../../constants/applicationConstants";
 import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddNewCardStepForm({ handleCompletedStep }) {
   const [last4ofCardNumber, setLast4ofCardNumber] = useState("****");
@@ -17,24 +18,30 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
 
   console.log(currentUser);
 
-  function submitNewCardInformation(data) {
+  async function submitNewCardInformation(data) {
     console.log(data);
-    console.info("Inserting user card information into user_cards table...");
+    console.info("Making request to backend to store user card information");
 
     try {
       const request = {
-        userId: currentUser.username || "unauthenticated",
-        data,
+        user_id: currentUser.username || "unauthenticated",
+        user_cards_id: uuidv4(),
+        cardholder_name: data.cardHolderName,
+        card_number: data.cardNumber,
+        exp: data.exp,
+        cvv: data.cvv,
+        channel_id: "manual",
       };
       console.info(request);
-      API.post(constants.FINANCEAPI, "/user-cards", {
-        body: { userId: currentUser.username, data },
+      await API.post(constants.FINANCEAPI, "/user-cards", {
+        body: request,
       });
+      // store card information in redux.
       console.info(
-        "Successfully inserted user card information into user_cards table."
+        "Successfull API call to /user-cards to store user information."
       );
 
-      // handleCompletedStep();
+      handleCompletedStep();
     } catch (error) {
       console.error(error);
     } // store info in redux on every change
@@ -55,6 +62,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
             className="uwallet-input h-100 w-100"
             maxLength={16}
             minLength={16}
+            value={"4445939493949494"}
             {...register("cardNumber", { required: true })}
           />
           {errors["cardNumber"] && <span className="error-icon">x</span>}
@@ -68,6 +76,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
               className="uwallet-input overflow-hidden"
               name="exp"
               {...register("exp", { required: true })}
+              value={"08/2024"}
             />
             {errors["exp"] && <span className="error-icon">x</span>}
           </div>
@@ -79,6 +88,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
               type="number"
               maxLength={3}
               minLength={3}
+              value={"546"}
               {...register("cvv", { required: true })}
             />
             {errors["cvv"] && <span className="error-icon">x</span>}
@@ -93,6 +103,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
                 className="uwallet-input h-100"
                 name="cardHolderName"
                 {...register("cardHolderName", { required: true })}
+                value={"Nazere Wright"}
               />
               {errors["cardHolderName"] && (
                 <span className="error-icon">x</span>

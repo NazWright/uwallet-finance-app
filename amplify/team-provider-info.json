@@ -45,7 +45,7 @@
           "tableRegion": "us-east-1",
           "env": "main",
           "deploymentBucketName": "amplify-financialapplication-main-53527-deployment",
-          "s3Key": "amplify-builds/storeUserCardInformation-32694a6164303572724d-build.zip"
+          "s3Key": "amplify-builds/storeUserCardInformation-5a4c524d4c464956764d-build.zip"
         }
       },
       "api": {

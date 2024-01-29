@@ -16,6 +16,7 @@ import OnboardingSteps from "./components/onboarding/steps/OnboardingSteps";
 
 Amplify.configure(config);
 API.configure(config);
+Auth.configure(config);
 
 const router = createBrowserRouter([
   {

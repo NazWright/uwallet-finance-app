@@ -218,10 +218,15 @@ app.post(path, async function (req, res) {
     Item: req.body,
   };
   try {
+    console.info("Inserting user cards information into user-cards table");
     let data = await ddbDocClient.send(new PutCommand(putItemParams));
     res.json({ success: "post call succeed!", url: req.url, data: data });
+    console.info(
+      "Successfully inserted user card information into user-cards table"
+    );
   } catch (err) {
     res.statusCode = 500;
+    console.error("post call failed. " + err);
     res.json({ error: err, url: req.url, body: req.body });
   }
 });
@@ -268,7 +273,11 @@ app.delete(
     };
 
     try {
+      console.info("Inserting user cards information into user-cards table");
       let data = await ddbDocClient.send(new DeleteCommand(removeItemParams));
+      console.info(
+        "Successfully inserted user card information into user-cards table"
+      );
       res.json({ url: req.url, data: data });
     } catch (err) {
       res.statusCode = 500;
