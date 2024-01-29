@@ -10,18 +10,12 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
   const [last4ofCardNumber, setLast4ofCardNumber] = useState("****");
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth);
-  const currentCards = useSelector(
-    (state) => state.userOnboardingInfo.userCards
-  );
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-
-  console.log(currentUser);
-  console.log(currentCards);
 
   async function submitNewCardInformation(data) {
     console.info("Making request to backend to store user card information");
