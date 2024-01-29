@@ -7,18 +7,31 @@ import cellularConnection from "../../../static/img/cellular-connection-10.png";
 
 export default function ChooseGoalsStep({ handleCompletedStep }) {
   const [selectedGoals, setSelectedGoals] = useState([]);
-  const goals = [
-    {
-      element: (
-        <div className={`overlap-wrapper goal `}>
-          <div className="SAVINGS-INVEST-wrapper">
-            <div className="SAVINGS-INVEST">SAVINGS &amp; INVEST</div>
-          </div>
-        </div>
-      ),
-      id: 0,
-    },
-  ];
+
+  function selectOrRemoveGoal(event, goal) {
+    if (selectedGoals.includes(goal)) {
+      const newSelectedGoals = selectedGoals.filter(
+        (selectedGoal) => goal !== selectedGoal
+      );
+      console.info("User removed goal: " + goal);
+      setSelectedGoals(newSelectedGoals);
+      return;
+    }
+
+    console.info("User selected new goal: " + goal);
+    setSelectedGoals([...selectedGoals, goal]);
+  }
+
+  function submitUserGoals(event) {
+    if (selectedGoals.length !== 3) {
+      alert("Please select three goals.");
+      return;
+    }
+
+    // TODO: store user goal data to database here
+
+    handleCompletedStep();
+  }
 
   return (
     <div className="LOG-IN-screen">
@@ -47,36 +60,73 @@ export default function ChooseGoalsStep({ handleCompletedStep }) {
           LEARNING EARNS POINTS, WHICH CAN <br />
           BE REDEEMED FOR REWARDS.
         </p>
-        <div className="overlap-wrapper goal">
+        <div
+          className={`overlap-wrapper goal ${
+            selectedGoals.includes("savings") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "savings")}
+        >
           <div className="SAVINGS-INVEST-wrapper">
             <div className="SAVINGS-INVEST">SAVINGS &amp; INVEST</div>
           </div>
         </div>
-        <div className="group-3 goal">
+        <div
+          className={`group-3 goal ${
+            selectedGoals.includes("budgeting") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "budgeting")}
+        >
           <div className="text-wrapper-5">BUDGETING</div>
         </div>
-        <div className="group-4 goal">
+        <div
+          className={`group-4 goal ${
+            selectedGoals.includes("debt") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "debt")}
+        >
           <div className="text-wrapper-6">DEBT PAYOFF</div>
         </div>
-        <div className="group-5 goal">
+        <div
+          className={`group-5 goal ${
+            selectedGoals.includes("earn") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "earn")}
+        >
           <div className="text-wrapper-7">EARN</div>
         </div>
-        <div className="group-6 goal">
+        <div
+          className={`group-6 goal ${
+            selectedGoals.includes("spend") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "spend")}
+        >
           <div className="text-wrapper-8">SPEND</div>
         </div>
-        <div className="group-7 goal">
+        <div
+          className={`group-7 goal ${
+            selectedGoals.includes("college") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "college")}
+        >
           <div className="text-wrapper-9">COLLEGE</div>
         </div>
-        <div className="group-8 goal">
+        <div
+          className={`group-8 goal ${
+            selectedGoals.includes("protect") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "protect")}
+        >
           <div className="text-wrapper-10">PROTECT</div>
         </div>
-        <div className="group-9 goal">
+        <div
+          className={`group-9 goal ${
+            selectedGoals.includes("borrow") ? "selected" : ""
+          }`}
+          onClick={(event) => selectOrRemoveGoal(event, "borrow")}
+        >
           <div className="text-wrapper-11">BORROW</div>
         </div>
-        <div className="group-10 goal">
-          <div className="text-wrapper-12">JOBS</div>
-        </div>
-        <Link className="group-11" onClick={handleCompletedStep}>
+        <Link className="group-11" onClick={submitUserGoals}>
           <div className="text-wrapper-13" style={{ color: "white" }}>
             Continue
           </div>
