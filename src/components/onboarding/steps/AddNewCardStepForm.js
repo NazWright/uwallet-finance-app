@@ -51,7 +51,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
       handleCompletedStep();
     } catch (error) {
       console.error(error);
-    } // store info in redux on every change
+    }
   }
 
   return (
