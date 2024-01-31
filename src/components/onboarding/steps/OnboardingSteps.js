@@ -3,39 +3,25 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPageState } from "../../../features/onboarding/userActionPagesSlice";
 import { useNavigate } from "react-router-dom";
+import { pages } from "../../../data/userActionPagesData";
+import OnboardingTasksOverview from "./OnboardingTasksOverview";
+import AddNewCardStep from "./AddNewCardStep";
+import ChooseGoalsStep from "./ChooseGoalsStep";
+import WelcomeStep from "./WelcomeStep";
 
 export default function OnboardingSteps() {
-  const userActionPages = useSelector((state) => state.userAction.pages);
   const userIsAuthenticated = useSelector((state) => state.auth.authenticated);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [pageIndex, setPageIndex] = useState(0);
 
-  useEffect(() => {
-    if (userActionPages[pageIndex].complete === true) {
-      setPageIndex(pageIndex + 1);
-    }
-  }, [pageIndex, setPageIndex, userActionPages]);
+  function markPageStatusAsComplete() {
+    setPageIndex(pageIndex + 1);
 
-  function markPageStatusAsComplete(pages, currentPageIndex) {
-    const newPageState = pages.map((page) => {
-      /* TODO: it would be imperative to check if the previous page is complete here as well. */
-      if (page.id === currentPageIndex) {
-        return {
-          id: page.id,
-          complete: true,
-          element: page.element,
-        };
-      }
-      return page;
-    });
-    dispatch(setPageState({ pages: newPageState }));
-
-    redirectIfOnboardingIsComplete(newPageState);
+    redirectIfOnboardingIsComplete(pageIndex);
   }
 
-  function redirectIfOnboardingIsComplete(pageState) {
-    if (allOnboardingStepsAreComplete(pageState)) {
+  function redirectIfOnboardingIsComplete(pageIndex) {
+    if (pageIndex === 3) {
       if (userIsAuthenticated) {
         navigate("/dashboard");
       } else {
@@ -44,15 +30,29 @@ export default function OnboardingSteps() {
     }
   }
 
-  function allOnboardingStepsAreComplete(pages) {
-    return pages[pages.length - 1].complete;
+  function getCurrentPageElement() {
+    switch (pageIndex) {
+      case 0:
+        return (
+          <OnboardingTasksOverview
+            handleCompletedStep={markPageStatusAsComplete}
+          />
+        );
+      case 1:
+        return (
+          <AddNewCardStep handleCompletedStep={markPageStatusAsComplete} />
+        );
+      case 2:
+        return (
+          <ChooseGoalsStep handleCompletedStep={markPageStatusAsComplete} />
+        );
+      case 3:
+        return <WelcomeStep handleCompletedStep={markPageStatusAsComplete} />;
+
+      default:
+        navigate("/");
+    }
   }
 
-  return (
-    userActionPages[pageIndex].element &&
-    React.cloneElement(userActionPages[pageIndex].element, {
-      handleCompletedStep: () =>
-        markPageStatusAsComplete(userActionPages, pageIndex),
-    })
-  );
+  return getCurrentPageElement(pageIndex);
 }
