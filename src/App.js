@@ -50,9 +50,7 @@ function App() {
           );
         }
       } catch (error) {
-        errorLogFormatter(error);
-        dispatch(setAuthenticated(false));
-        dispatch(setUser({}));
+        console.warn("No user is currently authenticated, please sign in.");
       }
     }
 

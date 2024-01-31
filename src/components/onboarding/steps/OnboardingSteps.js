@@ -48,8 +48,11 @@ export default function OnboardingSteps() {
     return pages[pages.length - 1].complete;
   }
 
-  return React.cloneElement(userActionPages[pageIndex].element, {
-    handleCompletedStep: () =>
-      markPageStatusAsComplete(userActionPages, pageIndex),
-  });
+  return (
+    userActionPages[pageIndex].element &&
+    React.cloneElement(userActionPages[pageIndex].element, {
+      handleCompletedStep: () =>
+        markPageStatusAsComplete(userActionPages, pageIndex),
+    })
+  );
 }

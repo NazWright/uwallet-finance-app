@@ -30,23 +30,33 @@ export default function SignUp({ verificationHandler }) {
   const signUpSubmit = async (data) => {
     infoLogFormatter("Starting sign up authentication process");
 
-    const signUpAttributes = {
-      email: data.email,
-      family_name: data.lastName,
-      given_name: data.firstName,
-      phone_number: "+13362072779",
-    };
-
     try {
+      const signUpAttributes = {
+        email: data.email,
+        family_name: data.lastName,
+        given_name: data.firstName,
+        phone_number: "+13362072779",
+      };
+
       const authenticatedUser = await Auth.signUp({
         username: data.email,
         password: data.password,
         attributes: signUpAttributes,
       });
+      console.group();
+      console.log("logging authenticated user");
+      console.groupEnd();
+      console.log(authenticatedUser);
 
       infoLogFormatter("Successfully authenticated new user.");
       infoLogFormatter("Starting verification process...");
-      dispatch(setUser({ ...signUpAttributes, password: data.password }));
+      dispatch(
+        setUser({
+          ...signUpAttributes,
+          password: data.password,
+          userId: authenticatedUser.userSub,
+        })
+      );
       verificationHandler();
       setNeedsVerification(true);
     } catch (error) {

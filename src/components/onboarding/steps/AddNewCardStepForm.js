@@ -22,7 +22,7 @@ export default function AddNewCardStepForm({ handleCompletedStep }) {
     try {
       /* TODO: Right now, a malicious user could enter in the same card information more than once. We should not allow the same card number to be entered into the database. */
       const request = {
-        user_id: currentUser.username || "unauthenticated",
+        user_id: currentUser.userId || "unauthenticated",
         user_cards_id: uuidv4(),
         cardholder_name: data.cardHolderName,
         card_number: data.cardNumber,

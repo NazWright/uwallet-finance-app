@@ -6,7 +6,7 @@ const initialState = {
   family_name: "",
   email: "",
   phone_number: "",
-  username: "",
+  userId: "",
 };
 
 export const authSlice = createSlice({
