@@ -97,6 +97,7 @@ export default function Dashboard({ accessToken }) {
 
   async function onSignOut() {
     try {
+      setLoading(true);
       await Auth.signOut();
       dispatch(setAuthenticated(false));
       dispatch(setUser(undefined));
@@ -124,12 +125,7 @@ export default function Dashboard({ accessToken }) {
   const transactions = transactionSyncJson.added;
 
   return (
-    <div
-      className={
-        loading &&
-        "d-flex justify-content-center h-100 w-100 align-items-center"
-      }
-    >
+    <div className={loading && constants.flexFullWidthHeightCenteredClassName}>
       {!loading && (
         <div className="home-page">
           <div className="div-3">

@@ -9,7 +9,7 @@ import "./SignIn.css";
 import uWalletLoginImage from "../../static/img/untitled-design-36-3.png";
 import SignInFormContent from "./SignInForm";
 
-export default function SignInContent({ forgotPasswordTrigger }) {
+export default function SignInContent({ forgotPasswordTrigger, setLoading }) {
   const dispatch = useDispatch();
 
   const {
@@ -42,5 +42,10 @@ export default function SignInContent({ forgotPasswordTrigger }) {
     }
   };
 
-  return <SignInFormContent forgotPasswordTrigger={forgotPasswordTrigger} />;
+  return (
+    <SignInFormContent
+      setLoading={setLoading}
+      forgotPasswordTrigger={forgotPasswordTrigger}
+    />
+  );
 }
