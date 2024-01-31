@@ -1,5 +1,5 @@
 {
-  "httpMethod": "POST",
+  "httpMethod": "GET",
   "path": "/user-cards",
   "queryStringParameters": {
     "limit": "10"
@@ -7,5 +7,5 @@
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "{\"userId\":\"29b340fd-ab61-491b-9135-007d8c3ddf40\",\"user_cards_id\":\"29b340fd-ab61-491b-9135-007d8c3dd654\",\"card_number\":\"465384736299873\", \"exp\":\"08/2023\", \"cvv\":\"123\", \"cardholder_name\":\"Nazere\", \"channel_id\":\"manual\" }"
+  "body": "{\"user_id\":\"e6c3e339-a06f-4cf9-b75c-18be38f05580\"}"
 }

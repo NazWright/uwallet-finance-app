@@ -1,5 +1,5 @@
 import { Auth, API } from "aws-amplify";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated, setUser } from "../../features/auth/authSlice";
@@ -21,6 +21,7 @@ import { setPlaidAccessToken } from "../../features/plaid/plaidSlice";
 import { default as accountsGetResponseJson } from "../../data/accountsGetResponse.json";
 import { default as transactionSyncJson } from "../../data/transactionsGetResponse.json";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 // The usePlaidLink hook manages Plaid Link creation
 // It does not return a destroy function;
 // instead, on unmount it automatically destroys the Link instance
@@ -28,34 +29,57 @@ import { useNavigate } from "react-router-dom";
 export default function Dashboard({ accessToken }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const plaidAccessToken = useSelector(
     (state) => state.plaidAuth.plaidAccessToken
   );
 
   const user = useSelector((state) => state.auth);
+  const [accounts, setAccounts] = useState([]);
 
-  const { accounts } = accountsGetResponseJson;
+  console.log(user);
+
+  useEffect(() => {
+    async function fetchUserAccountInformation() {
+      const fetchAccountsResponse = await API.get(
+        constants.FINANCEAPI,
+        "/user-cards",
+        {
+          body: { user_id: user.username },
+        }
+      );
+
+      console.info("Setting account information..");
+      setAccounts(fetchAccountsResponse);
+      setLoading(false);
+    }
+
+    fetchUserAccountInformation();
+  }, [user.username]);
 
   const config = {
-    onSuccess: async (public_token, metadata) => {
-      try {
-        infoLogFormatter("Successfully retrieved public token");
-        infoLogFormatter(
-          `Fetching plaid accessToken using public token: ${public_token}`
-        );
-        const response = await API.post(
-          constants.FINANCEAPI,
-          "/plaid/access-token",
-          { body: { publicToken: public_token } }
-        );
-        dispatch(setPlaidAccessToken(response.accessToken));
-        infoLogFormatter(
-          `successfully retrieved plaid accessToken: ${response.accessToken}`
-        );
-      } catch (error) {
-        errorLogFormatter(error);
-      }
-    },
+    onSuccess: React.useCallback(
+      async (public_token, metadata) => {
+        try {
+          infoLogFormatter("Successfully retrieved public token");
+          infoLogFormatter(
+            `Fetching plaid accessToken using public token: ${public_token}`
+          );
+          const response = await API.post(
+            constants.FINANCEAPI,
+            "/plaid/access-token",
+            { body: { publicToken: public_token } }
+          );
+          dispatch(setPlaidAccessToken(response.accessToken));
+          infoLogFormatter(
+            `successfully retrieved plaid accessToken: ${response.accessToken}`
+          );
+        } catch (error) {
+          errorLogFormatter(error);
+        }
+      },
+      [dispatch]
+    ),
     onExit: (err, metadata) => {},
     onEvent: (eventName, metadata) => {},
     token: accessToken,
@@ -100,19 +124,29 @@ export default function Dashboard({ accessToken }) {
   const transactions = transactionSyncJson.added;
 
   return (
-    <div>
-      <div className="home-page">
-        <div className="div-3">
-          <DashboardContent
-            addNewCardHandler={openPlaidAuthenticationPortal}
-            accounts={accounts}
-            transactions={transactions}
-            cardHolderName={`${user.given_name} ${user.family_name}`}
-          />
-          <ProfileToolTip firstName={user.given_name} />
-          <Button onClick={onSignOut}>Sign Out</Button>
+    <div
+      className={
+        loading &&
+        "d-flex justify-content-center h-100 w-100 align-items-center"
+      }
+    >
+      {!loading && (
+        <div className="home-page">
+          <div className="div-3">
+            {accounts.length > 0 && (
+              <DashboardContent
+                addNewCardHandler={openPlaidAuthenticationPortal}
+                accounts={accounts}
+                transactions={transactions}
+                cardHolderName={`${user.given_name} ${user.family_name}`}
+              />
+            )}
+            <ProfileToolTip firstName={user.given_name} />
+            <Button onClick={onSignOut}>Sign Out</Button>
+          </div>
         </div>
-      </div>
+      )}
+      {loading && <CircularProgress />}
     </div>
   );
 }

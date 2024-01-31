@@ -35,6 +35,10 @@ export default function DashboardContent({
     [selectedAccountId]
   );
 
+  console.log(
+    accounts[0].card_number.substring(accounts[0].card_number.length - 4)
+  );
+
   return (
     <>
       <div className="overlap-14">
@@ -52,7 +56,12 @@ export default function DashboardContent({
                 <CreditCard
                   key={accountId}
                   index={cardIndex}
-                  cardNumber={account.mask}
+                  cardNumber={
+                    account.mask ||
+                    account.card_number.substring(
+                      account.card_number.length - 4
+                    )
+                  }
                   validThru={"** / **"}
                   cardHolderName={cardHolderName}
                   onClickHandler={(event) => selectCard(event, accountId)}
@@ -61,7 +70,7 @@ export default function DashboardContent({
             })}
           </div>
           {/* Credit card End */}
-          <MyBalance balance={balances.available + balances.current} />
+          <MyBalance balance={200} />
         </div>
         <AdditionalCards addNewCardHandler={addNewCardHandler} />
         <Footer />
