@@ -12,11 +12,12 @@ import {
   infoLogFormatter,
 } from "../../utils/infoLogFormatter";
 
-export default function SignUp({ verificationHandler }) {
+export default function SignUp({ verificationHandler, setLoading }) {
   const [needsVerification, setNeedsVerification] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.auth);
+  const [errorFormText, setErrorFormText] = useState("");
 
   console.dir(currentUser);
 
@@ -43,10 +44,8 @@ export default function SignUp({ verificationHandler }) {
         password: data.password,
         attributes: signUpAttributes,
       });
-      console.group();
-      console.log("logging authenticated user");
-      console.groupEnd();
-      console.log(authenticatedUser);
+
+      setLoading(true);
 
       infoLogFormatter("Successfully authenticated new user.");
       infoLogFormatter("Starting verification process...");
@@ -58,16 +57,17 @@ export default function SignUp({ verificationHandler }) {
         })
       );
       verificationHandler();
+      setLoading(false);
       setNeedsVerification(true);
     } catch (error) {
-      errorLogFormatter(error);
-      dispatch(setUser(undefined));
-      dispatch(setAuthenticated(false));
+      setErrorFormText(error.message);
+      console.error(error.message);
     }
   };
 
   const submitVerificationCode = async (data) => {
     infoLogFormatter("verifying current user");
+    setLoading(true);
     if (!data.verificationCode) {
       infoLogFormatter("No verification code was specified during submission.");
       return;
@@ -153,19 +153,28 @@ export default function SignUp({ verificationHandler }) {
     },
   ];
 
-  const SignUpInput = ({ type, name, required, placeholder, value }) => {
+  function onFocus(event) {
+    setErrorFormText("");
+  }
+
+  const SignUpInput = ({ type, name, required, placeholder, value, error }) => {
     return (
-      <Form.Group className={inputMarginBottomClassName}>
-        <div className="form-control uwallet-input-group">
+      <Form.Group className={`${inputMarginBottomClassName}`}>
+        <div className={`form-control uwallet-input-group ${error && "error"}`}>
           <input
-            className="uwallet-input"
+            className={`uwallet-input`}
             name={name}
             type={type}
             placeholder={placeholder}
             value={value}
             {...register(name, { required: true })}
+            onFocus={onFocus}
           />
-          {errors[name] && required && <span className="error-icon">x</span>}
+          {errors[name] ||
+            formHasErrors ||
+            (errorFormText && required && (
+              <span className="error-icon">x</span>
+            ))}
         </div>
       </Form.Group>
     );
@@ -173,38 +182,45 @@ export default function SignUp({ verificationHandler }) {
 
   const UnverifiedSignUpContent = () => {
     return (
-      <Form
-        style={{ position: "relative", top: "30px" }}
-        onSubmit={handleSubmit(signUpSubmit)}
-        className={`mt-4 p-2 ${formHasErrors ? "error" : ""}`}
-      >
-        {signUpFormFieldsMeta.map((field) => {
-          return (
-            <SignUpInput
-              type={field.type}
-              placeholder={field.placeholder}
-              key={field.id}
-              name={field.name}
-              required={field.required}
-              value={field.value}
-            />
-          );
-        })}
-        <div className="w-100 d-flex justify-content-center">
-          <button
-            type="submit"
-            className="authentication-button sign-up onboarding"
-          >
-            <div className="text-white">Sign Up</div>
-          </button>
-        </div>
-      </Form>
+      <>
+        <Form
+          onSubmit={handleSubmit(signUpSubmit)}
+          className={`mt-4 p-2 ${
+            formHasErrors || errorFormText ? "error" : ""
+          }`}
+        >
+          {errorFormText && <h3 className="error-message">{errorFormText}</h3>}
+          {signUpFormFieldsMeta.map((field) => {
+            return (
+              <SignUpInput
+                type={field.type}
+                placeholder={field.placeholder}
+                key={field.id}
+                name={field.name}
+                required={field.required}
+                value={field.value}
+                error={formHasErrors || errorFormText}
+              />
+            );
+          })}
+          <div className="w-100 d-flex justify-content-center">
+            <button
+              type="submit"
+              className="authentication-button sign-up onboarding"
+            >
+              <div className="text-white">Sign Up</div>
+            </button>
+          </div>
+        </Form>
+      </>
     );
   };
 
   const formValues = watch();
 
   const formHasErrors = Object.keys(errors).length > 0;
+
+  console.log(errorFormText);
 
   return (
     <div className={`container mt-5`}>

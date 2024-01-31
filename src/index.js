@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import ForgotPasswordForm from "./components/shared/forgot-password/ForgotPasswordForm";
 import OnboardingPage from "./components/onboarding/OnboardingPage";
 import OnboardingSteps from "./components/onboarding/steps/OnboardingSteps";
+import Chat from "./components/chat/Chat";
 
 Amplify.configure(config);
 API.configure(config);
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/user/onboarding",
     element: <OnboardingSteps />,
+  },
+  {
+    path: "/chat",
+    element: <Chat />,
   },
 ]);
 

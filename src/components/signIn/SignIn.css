@@ -36,6 +36,12 @@
   top: 43px;
   width: 247px;
 }
+.error-message {
+  font-size: 0.75rem;
+  margin: 1rem;
+  position: relative;
+  color: red;
+}
 
 .screen-14 .overlap-89.active {
   background-color: #0099ff;
@@ -140,7 +146,17 @@
 }
 
 .authentication-form.sign-up {
-  height: 50%;
+  height: 58%;
+}
+
+.authentication-form.sign-up form {
+  top: 60px !important;
+  position: relative;
+  height: 62%;
+}
+
+.authentication-form.sign-up form.error {
+  top: 30px !important;
 }
 
 .authentication-form.sign-up.error {
@@ -150,7 +166,13 @@
 .authentication-form.sign-up.verification {
   height: 33%;
 }
+.authentication-form.sign-up .uwallet-input {
+  height: 1.5rem;
+}
 
+.authentication-form.sign-up .uwallet-input-group {
+  height: 2.5rem;
+}
 .error-text {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
@@ -176,6 +198,10 @@
   outline: none;
   flex: 2;
   background: transparent;
+}
+
+.form-control.error {
+  border: 1px solid red !important;
 }
 
 .uwallet-input-group {

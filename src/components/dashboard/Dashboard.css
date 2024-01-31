@@ -952,7 +952,7 @@
   width: 58px;
 }
 
-.home-page .rectangle-24 {
+.rectangle-24 {
   background-color: #ffffff;
   border: 1px solid;
   border-color: #707070;
@@ -971,6 +971,15 @@
   height: auto;
   object-fit: cover;
   width: auto;
+  transition: 0.3s ease-in-out;
+}
+
+.home-page .footer-icon:hover {
+  scale: 1.1;
+}
+
+.home-page .footer-icon:active {
+  scale: 0.8;
 }
 
 .home-page .scroll-group-3 {
