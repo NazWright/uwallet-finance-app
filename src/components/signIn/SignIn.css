@@ -155,6 +155,10 @@
   height: 62%;
 }
 
+.authentication-form.sign-up.verification form {
+  top: unset !important;
+}
+
 .authentication-form.sign-up form.error {
   top: 30px !important;
 }
