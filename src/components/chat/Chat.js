@@ -5,6 +5,8 @@ import Footer from "../dashboard/Footer";
 import avatar from "../../static/img/img-ad4293a71892-1.png";
 import { CircularProgress } from "@mui/material";
 import { constants } from "../../constants/applicationConstants";
+import wificonnection from "../../static/img/wifi-3.png";
+import cellularconnection from "../../static/img/cellular-connection-10.png";
 
 export default function Chat() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,9 +26,9 @@ export default function Chat() {
               <img
                 className="cellular-connection"
                 alt="Cellular connection"
-                src="/img/cellular-connection-3.png"
+                src={cellularconnection}
               />
-              <img className="wifi" alt="Wifi" src="/img/wifi-4.png" />
+              <img className="wifi" alt="Wifi" src={wificonnection} />
               <div className="time">9:30</div>
               <div className="battary">
                 <img className="cap" alt="Cap" src="/img/cap-3.png" />

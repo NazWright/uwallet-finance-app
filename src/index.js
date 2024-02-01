@@ -14,6 +14,8 @@ import ForgotPasswordForm from "./components/shared/forgot-password/ForgotPasswo
 import OnboardingPage from "./components/onboarding/OnboardingPage";
 import OnboardingSteps from "./components/onboarding/steps/OnboardingSteps";
 import Chat from "./components/chat/Chat";
+import Insights from "./components/insights/Insights";
+import SpendingActivityFull from "./components/spending-activity/SpendingActivityFull";
 
 Amplify.configure(config);
 API.configure(config);
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
   {
     path: "/chat",
     element: <Chat />,
+  },
+  {
+    path: "/spending-activity",
+    element: <SpendingActivityFull />,
+  },
+  {
+    path: "/insights",
+    element: <Insights />,
   },
 ]);
 
