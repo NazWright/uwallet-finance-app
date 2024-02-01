@@ -3,6 +3,7 @@ import allRecentTransactionsButton from "../../../static/img/path-32.png";
 import expensesIcon from "../../../static/img/14-7.png";
 import incomesIcon from "../../../static/img/14-6.png";
 import RecentTransaction from "./RecentTransaction";
+import "../Dashboard.css";
 import activeButtonImagePath from "../../../static/img/path-30-1.png";
 
 export default function RecentTransactionsList({ expenses, incomes }) {
@@ -36,12 +37,13 @@ export default function RecentTransactionsList({ expenses, incomes }) {
   return (
     <div>
       <div className="payment-history">Recent Transactions</div>
-      <img className="path-16" alt="Path" src={allRecentTransactionsButton} />
 
       <>
         <button
-          style={{ border: "none", background: "transparent" }}
-          className="payment-history-2"
+          className={`payment-history-2 recent-transactions-button onboarding ${
+            selectedFilter.includes("all") ? "active" : ""
+          }`}
+          style={{ border: "none" }}
           onClick={(event) => {
             setSelectedFilter("all");
           }}
@@ -51,7 +53,12 @@ export default function RecentTransactionsList({ expenses, incomes }) {
       </>
 
       <>
-        <div className="rectangle-13" />
+        <button
+          className={`rectangle-13 onboarding recent-transactions-button ${
+            selectedFilter.includes("incomes") ? "active" : ""
+          }`}
+          style={{ border: "none" }}
+        />
 
         <div className="overlap-group-wrapper">
           <button
@@ -82,7 +89,12 @@ export default function RecentTransactionsList({ expenses, incomes }) {
       </div>
 
       <>
-        <div className="rectangle-14" />
+        <button
+          className={`rectangle-14 onboarding recent-transactions-button ${
+            selectedFilter.includes("expenses") ? "active" : ""
+          }`}
+          style={{ border: "none" }}
+        />
         <div className="group-37">
           <button
             style={{ border: "none" }}
